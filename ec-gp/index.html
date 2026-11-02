@@ -228,6 +228,32 @@ footer a { color: inherit; }
   .nav { margin-left: 0; width: 100%; justify-content: space-between; }
   .nav button { flex: 1; padding: 7px 4px; font-size: 13px; }
 }
+.gd h2 { font-size: 22px; margin-bottom: 10px; }
+.gd ol.rules { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; counter-reset: r; }
+.gd ol.rules li { counter-increment: r; display: grid; grid-template-columns: 32px 1fr; gap: 12px; align-items: start; background: var(--surface); border: 1px solid var(--rule); border-radius: 14px; padding: 12px 14px; }
+.gd ol.rules li::before { content: counter(r); width: 30px; height: 30px; border-radius: 50%; background: var(--ink); color: var(--on-ink); display: grid; place-items: center; font-family: var(--f-mono); font-size: 14px; }
+.gd ol.rules b { display: block; }
+.gd ol.rules span { color: var(--muted); font-size: 14px; }
+.plan { background: var(--surface); border: 1px solid var(--rule-strong); border-radius: 16px; padding: 18px; display: flex; flex-direction: column; gap: 12px; }
+.plan input[type=date] { padding: 10px 12px; border: 1px solid var(--rule-strong); border-radius: 10px; background: var(--surface); font-size: 16px; max-width: 220px; }
+.plan .res { background: var(--surface-2); border-radius: 12px; padding: 12px 14px; font-size: 15px; line-height: 1.5; }
+.plan .res .big { font-family: var(--f-display); font-size: 30px; font-weight: 600; color: var(--accent); line-height: 1.1; display: block; margin-bottom: 4px; }
+.plan .res.warn { border-left: 4px solid var(--hard); }
+.phases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.phase { border: 1px solid var(--rule); border-top: 4px solid var(--c); border-radius: 12px; padding: 12px; background: var(--surface); font-size: 14px; }
+.phase b { display: block; font-family: var(--f-display); font-size: 17px; }
+.phase .when { font-family: var(--f-mono); font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; display: block; margin: 2px 0 6px; }
+.day { display: flex; flex-direction: column; gap: 0; border-left: 2px solid var(--rule-strong); margin-left: 8px; }
+.day div { position: relative; padding: 0 0 14px 20px; font-size: 15px; }
+.day div::before { content: ""; position: absolute; left: -7px; top: 5px; width: 12px; height: 12px; border-radius: 50%; background: var(--c, var(--accent)); border: 2px solid var(--bg); }
+.day div small { display: block; color: var(--muted); font-size: 13px; }
+.tips { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 6px; }
+@media (max-width: 560px) {
+  .phases { grid-template-columns: 1fr; }
+  .plan .res .big { font-size: 24px; }
+  .nav { flex-wrap: wrap; border-radius: 16px; }
+  .nav button { flex: 1 1 30%; }
+}
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
 </style>
 
@@ -238,6 +264,7 @@ footer a { color: inherit; }
   <nav class="nav" aria-label="Bereiche">
     <button id="navHome" data-view="home" aria-current="true">Lernen</button>
     <button id="navThemes" data-view="themes" hidden>Themen</button>
+    <button id="navGuide" data-view="guide">So lernst du</button>
     <button id="navBrowse" data-view="browse">Alle Karten</button>
     <button id="navSettings" data-view="settings">Fortschritt</button>
   </nav>
@@ -248,7 +275,7 @@ footer a { color: inherit; }
 <footer id="foot"></footer>
 <div class="toast" id="toast" hidden></div>
 
-<script src="deck.js?v=4"></script>
+<script src="deck.js?v=5"></script>
 <script>
 (function () {
   "use strict";
@@ -583,6 +610,91 @@ footer a { color: inherit; }
   }
 
   // ---------- Ansicht: Fortschritt ----------
+  // ---------- So lernst du ----------
+  const EXAM_KEY = "pocketlearn-karten:pruefung";
+  function examDate() { try { return localStorage.getItem(EXAM_KEY) || ""; } catch (e) { return ""; } }
+  function fmtDate(t) { return new Date(t).toLocaleDateString("de-DE", { day: "numeric", month: "long" }); }
+  function planFor(dateStr) {
+    const neu = CARDS.filter(c => !stateOf(c.id)).length;
+    if (!dateStr) return null;
+    const today = new Date(); today.setHours(0, 0, 0, 0);
+    const ex = new Date(dateStr + "T00:00:00"); if (isNaN(ex)) return null;
+    const days = Math.round((ex - today) / DAY);
+    const pick = n => [5, 10, 20, 50].find(x => x >= n) || 50;
+    if (days < 0) return { days, msg: "Das Datum liegt in der Vergangenheit. Trag den Tag deiner Prüfung ein." };
+    if (neu === 0) return { days, neu, msg: `Du hast schon alle Karten einmal gelernt. Bis zur Prüfung: jeden Tag nur die <b>fälligen Karten</b>. In der letzten Woche zusätzlich „Freies Üben“.` };
+    if (days <= 7) return { days, neu, set: 20, warn: true, msg: `Nur noch ${days} Tag${days === 1 ? "" : "e"}. Neue Karten werden nicht mehr sicher. Lerne mit <b>„Wichtigste zuerst“</b> nur noch die häufigsten Themen (20 pro Runde), wiederhole die fälligen Karten und übe frei.` };
+    const intro = days - 28 >= 7 ? days - 28 : Math.max(days - 7, 1);
+    const per = Math.ceil(neu / intro), set = pick(per), endIntro = today.getTime() + Math.ceil(neu / set) * DAY;
+    const tight = days - 28 < 7 || per > 50;
+    return { days, neu, per, set, warn: tight, endIntro, ex: ex.getTime(),
+      msg: `Noch <b>${days} Tage</b> bis zur Prüfung, <b>${neu} Karten</b> sind in diesem Bereich noch neu. Mit <b>${set} neuen Karten pro Tag</b> hast du alle bis zum <b>${fmtDate(endIntro)}</b> einmal gelernt.` +
+        (tight ? ` <br><b>Achtung, knapp:</b> Für das Festigen bleibt wenig Zeit. Lass „Wichtigste zuerst“ eingestellt – dann kannst du auf jeden Fall die häufigsten Themen.` : ` Danach bleiben rund 3 Wochen zum Festigen und eine Woche zum Wiederholen.`) };
+  }
+  function renderGuide() {
+    famVisible(true);
+    setNav("guide"); Q = null;
+    const fam = Array.isArray(D.meta.family) && D.meta.family.length > 1 ? D.meta.family : null;
+    const other = fam ? fam.filter(x => !x.current).map(x => x.label) : [];
+    const dStr = examDate(), P = planFor(dStr);
+    const n = CARDS.length, exPer = [5, 10, 20, 50].find(x => x >= Math.ceil(n / 28)) || 50;
+    const today = new Date(); today.setHours(0, 0, 0, 0);
+    const exT = P && P.days >= 0 && dStr ? new Date(dStr + "T00:00:00").getTime() : null;
+    $("#app").innerHTML = `
+      <section class="view gd">
+        <div class="hero"><span class="eyebrow">Lernstrategie</span><h1>So lernst du am besten</h1>
+          <p>Kurz jeden Tag, das Wichtigste zuerst, ehrlich bewerten. Hier steht, wie das konkret aussieht – und wie viele Karten du pro Tag brauchst.</p></div>
+        <section>
+          <h2>Die 3 Grundregeln</h2>
+          <ol class="rules">
+            <li><div><b>Jeden Tag eine Runde</b><span>Lieber 15–20 Minuten täglich als 2 Stunden am Wochenende. Das Gehirn braucht Pausen zum Speichern.</span></div></li>
+            <li><div><b>Zuerst die fälligen Karten</b><span>„Runde starten“ macht das automatisch. Steht „heute fällig“ auf 0, bist du für heute fertig.</span></div></li>
+            <li><div><b>Ehrlich bewerten</b><span>Erst selbst antworten, dann aufdecken. Wer „Gut“ drückt, obwohl er es nicht wusste, sieht die Karte zu spät wieder.</span></div></li>
+          </ol>
+        </section>
+        <section class="plan">
+          <h2 style="margin:0">Dein persönlicher Plan</h2>
+          <div class="field"><label for="examIn">Wann ist deine Prüfung?</label>
+            <input type="date" id="examIn" value="${esc(dStr)}"></div>
+          ${P ? `<div class="res${P.warn ? " warn" : ""}">${P.set ? `<span class="big">${P.set} neue Karten pro Tag</span>` : ""}${P.msg}</div>
+            ${P.set ? `<div class="actions"><button class="btn primary" id="planSet">So einstellen</button></div>` : ""}
+            ${fam ? `<p class="hint">Der Plan gilt für <b>${esc(D.meta.title)}</b>. Schalte oben auf ${other.map(esc).join(", ")} um und stell dort auch ein – das Prüfungsdatum ist schon eingetragen.</p>` : ""}`
+          : `<p class="hint">Trag das Datum ein – die App rechnet aus, wie viele neue Karten du pro Tag brauchst. Das Datum bleibt nur auf diesem Gerät gespeichert.</p>`}
+        </section>
+        <section>
+          <h2>Der Weg bis zur Prüfung</h2>
+          <div class="phases">
+            <div class="phase" style="--c:var(--good)"><b>1 · Aufbauen</b><span class="when">${P && P.endIntro ? "bis " + fmtDate(P.endIntro) : "die ersten Wochen"}</span>Jeden Tag eine Runde mit neuen Karten. „Wichtigste zuerst“ eingestellt lassen.</div>
+            <div class="phase" style="--c:var(--accent)"><b>2 · Festigen</b><span class="when">${P && P.endIntro ? "bis " + fmtDate(exT - 7 * DAY) : "ca. 3 Wochen"}</span>Alle Karten sind einmal gelernt. Jetzt nur noch die fälligen Karten – bis alles „sicher“ ist.</div>
+            <div class="phase" style="--c:var(--easy)"><b>3 · Letzte Woche</b><span class="when">${exT ? "ab " + fmtDate(Math.max(exT - 7 * DAY, today.getTime())) : "vor der Prüfung"}</span>Täglich die fälligen Karten, 1–2× „Freies Üben“, einmal mit Vorderseite „Begriff“ als Härtetest.</div>
+          </div>
+        </section>
+        <section>
+          <h2>Beispiel: ein Lerntag</h2>
+          <div class="day">
+            ${fam ? `<div style="--c:var(--good)"><b>${esc(fam[0].label)}: eine Runde</b><small>Lernen → „Runde starten“ · fällige + 10 neue Karten · ca. 10 Minuten</small></div>
+            <div style="--c:var(--accent)"><b>Umschalten auf ${esc(fam[1].label)}: noch eine Runde</b><small>oben bei „Prüfungsbereich“ antippen · ca. 10 Minuten</small></div>`
+            : `<div style="--c:var(--good)"><b>Eine Runde</b><small>Lernen → „Runde starten“ · fällige + 10 neue Karten · ca. 15 Minuten</small></div>`}
+            <div style="--c:var(--easy)"><b>Bei „Nochmal“ die Erklärung lesen</b><small>verstehen statt auswendig lernen · die Karte kommt in derselben Runde wieder</small></div>
+            ${HAS_SRC ? `<div style="--c:var(--muted)"><b>Einmal pro Woche: Reiter „Themen“</b><small>langer goldener Balken, wenig Grün = wichtige Lücke</small></div>` : ""}
+          </div>
+          <p class="hint" style="margin-top:6px">Rechenbeispiel: Prüfung in 8 Wochen = 56 Tage. Davon 4 Wochen zum Festigen und Wiederholen, bleiben 28 Tage zum Aufbauen. ${n} Karten ÷ 28 Tage = ${Math.ceil(n / 28)} pro Tag → <b>${exPer}</b> einstellen.</p>
+        </section>
+        <section>
+          <h2>Lerntipps</h2>
+          <ul class="tips">
+            <li><b>Laut antworten</b> oder kurz aufschreiben – nur „im Kopf ungefähr wissen“ reicht in der Prüfung nicht.</li>
+            <li><b>Gleiche Zeit, gleicher Ort:</b> z. B. jeden Tag nach dem Frühstück oder in der Bahn. So wird es zur Gewohnheit.</li>
+            <li><b>Einen Tag verpasst?</b> Kein Problem. Am nächsten Tag zuerst die fälligen Karten, dafür weniger neue.</li>
+            <li><b>Handy weg beim Lernen</b> – außer für die App. Benachrichtigungen kurz ausschalten.</li>
+            <li><b>Mit anderen lernen:</b> Sich gegenseitig Karten abfragen festigt doppelt.</li>
+          </ul>
+        </section>
+      </section>`;
+    $("#examIn").onchange = e => { try { if (e.target.value) localStorage.setItem(EXAM_KEY, e.target.value); else localStorage.removeItem(EXAM_KEY); } catch (er) {} renderGuide(); };
+    if ($("#planSet")) $("#planSet").onclick = () => { S.settings.newPerSession = P.set; if (HAS_SRC) S.settings.order = "wichtig"; S.settings.cat = "all"; save(); toast(P.set + " neue Karten pro Runde eingestellt"); renderHome(); window.scrollTo(0, 0); };
+  }
+
   function renderSettings(confirmReset) {
     famVisible(true);
     setNav("settings"); Q = null;
@@ -628,7 +740,7 @@ footer a { color: inherit; }
 
   // ---------- Steuerung ----------
   document.querySelectorAll(".nav button").forEach(b => b.onclick = () => {
-    const v = b.dataset.view; if (v === "home") { Q = null; renderHome(); } else if (v === "browse") renderBrowse(); else if (v === "themes") renderThemes(); else renderSettings();
+    const v = b.dataset.view; if (v === "home") { Q = null; renderHome(); } else if (v === "browse") renderBrowse(); else if (v === "themes") renderThemes(); else if (v === "guide") renderGuide(); else renderSettings();
     window.scrollTo(0, 0);
   });
   document.addEventListener("keydown", e => {
