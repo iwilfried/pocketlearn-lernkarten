@@ -14,11 +14,15 @@ window.DECK={
    {
     "label": "Geschäftsprozesse",
     "href": "/",
+    "id": "ec-gp",
+    "n": 164,
     "current": true
    },
    {
     "label": "Kundenkommunikation",
-    "href": "/kk/"
+    "href": "/kk/",
+    "id": "ec-kk",
+    "n": 134
    }
   ],
   "categories": {

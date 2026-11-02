@@ -13,11 +13,15 @@ window.DECK={
   "family": [
    {
     "label": "Geschäftsprozesse",
-    "href": "/"
+    "href": "/",
+    "id": "ec-gp",
+    "n": 164
    },
    {
     "label": "Kundenkommunikation",
     "href": "/kk/",
+    "id": "ec-kk",
+    "n": 134,
     "current": true
    }
   ],

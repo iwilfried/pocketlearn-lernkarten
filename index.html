@@ -263,8 +263,21 @@ footer a { color: inherit; }
 .wel .how b { display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: var(--ink); color: var(--on-ink); font-family: var(--f-mono); font-size: 13px; margin-bottom: 8px; }
 .wel ul.rl { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 6px; }
 .wel .btn.primary { width: 100%; font-size: 17px; padding: 16px; }
+.wel .wel-go { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media (max-width: 480px) { .wel .wel-go { grid-template-columns: 1fr; } }
 .wel .more { background: transparent; border: 0; color: var(--muted); text-decoration: underline; font-size: 15px; padding: 6px; align-self: center; }
-@media (max-width: 400px) { .wel .how { grid-template-columns: 1fr; } }
+@media (max-width: 400px) { .wel .how { grid-template-columns: 1fr; } .wel .how div { display: flex; align-items: center; gap: 10px; } .wel .how b { margin: 0; flex: none; } }
+.mech-steps { margin: 10px 0 0; padding-left: 1.3em; display: flex; flex-direction: column; gap: 8px; font-size: 15px; }
+.mech-steps li::marker { font-weight: 700; color: var(--accent); }
+.mech .g { font-weight: 700; color: var(--c); white-space: nowrap; }
+.mech-tl { display: grid; grid-template-columns: repeat(5, 1fr); }
+.mech-tl div { position: relative; padding-top: 22px; text-align: center; font-size: 12px; }
+.mech-tl div::before { content: ""; position: absolute; top: 7px; left: 0; right: 0; height: 3px; background: var(--surface-2); }
+.mech-tl div:first-child::before { left: 50%; } .mech-tl div:last-child::before { right: 50%; }
+.mech-tl div::after { content: ""; position: absolute; top: 2px; left: 50%; margin-left: -7px; width: 14px; height: 14px; border-radius: 50%; background: var(--good); border: 2px solid var(--bg); }
+.mech-tl div.ok::after { background: var(--easy); }
+.mech-tl b { display: block; font-family: var(--f-mono); font-size: 12px; }
+.mech-tl span { color: var(--muted); }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
 </style>
 
@@ -286,7 +299,7 @@ footer a { color: inherit; }
 <footer id="foot"></footer>
 <div class="toast" id="toast" hidden></div>
 
-<script src="deck.js?v=6"></script>
+<script src="deck.js?v=7"></script>
 <script>
 (function () {
   "use strict";
@@ -625,8 +638,8 @@ footer a { color: inherit; }
   const EXAM_KEY = "pocketlearn-karten:pruefung";
   function examDate() { try { return localStorage.getItem(EXAM_KEY) || ""; } catch (e) { return ""; } }
   function fmtDate(t) { return new Date(t).toLocaleDateString("de-DE", { day: "numeric", month: "long" }); }
-  function planFor(dateStr) {
-    const neu = CARDS.filter(c => !stateOf(c.id)).length;
+  function planFor(dateStr, neuIn) {
+    const neu = neuIn != null ? neuIn : CARDS.filter(c => !stateOf(c.id)).length;
     if (!dateStr) return null;
     const today = new Date(); today.setHours(0, 0, 0, 0);
     const ex = new Date(dateStr + "T00:00:00"); if (isNaN(ex)) return null;
@@ -663,6 +676,7 @@ footer a { color: inherit; }
             <li><div><b>Ehrlich bewerten</b><span>Erst selbst antworten, dann aufdecken. Wer „Gut“ drückt, obwohl er es nicht wusste, sieht die Karte zu spät wieder.</span></div></li>
           </ol>
         </section>
+        ${mechanismHtml()}
         <section class="plan">
           <h2 style="margin:0">Dein persönlicher Plan</h2>
           <div class="field"><label for="examIn">Wann ist deine Prüfung?</label>
@@ -710,17 +724,64 @@ footer a { color: inherit; }
   const WELCOME_KEY = "pocketlearn-karten:willkommen";
   function welcomeSeen() { try { return !!localStorage.getItem(WELCOME_KEY); } catch (e) { return true; } }
   function setWelcomeSeen() { try { localStorage.setItem(WELCOME_KEY, "1"); } catch (e) {} }
-  function showChrome(on) { const n = document.querySelector(".nav"); if (n) n.hidden = !on; famVisible(on); }
+  function showChrome(on) {
+    const n = document.querySelector(".nav"); if (n) n.hidden = !on; famVisible(on);
+    const fam = Array.isArray(D.meta.family) && D.meta.family.length > 1;
+    $("#deckTitle").textContent = on || !fam ? D.meta.title : ((D.meta.subtitle || "").split(" · ")[0] || D.meta.title);
+  }
+  function mechanismHtml() {
+    return `<section class="mech">
+      <h2 style="font-size:20px;margin-bottom:6px">So arbeitet die App im Hintergrund</h2>
+      <p class="hint" style="font-size:14px">Die App nutzt <b>verteiltes Wiederholen</b>: Was man gerade zu vergessen beginnt und dann wieder abruft, bleibt viel länger im Gedächtnis. Deshalb hat jede Karte ihren eigenen Termin.</p>
+      <ol class="mech-steps">
+        <li><b>Jede Karte hat einen Termin.</b> Neue Karten haben noch keinen. Wenn du eine Karte bewertest, rechnet die App aus, wann sie wiederkommt.</li>
+        <li><b>Deine Bewertung bestimmt den Abstand.</b> Bei einer neuen Karte: <span class="g" style="--c:var(--again)">Nochmal</span> = gleich noch einmal in dieser Runde · <span class="g" style="--c:var(--hard)">Schwer</span> = morgen · <span class="g" style="--c:var(--good)">Gut</span> = in 2 Tagen · <span class="g" style="--c:var(--easy)">Leicht</span> = in 4 Tagen.</li>
+        <li><b>Der Abstand wächst.</b> Jedes Mal, wenn du eine Karte wieder richtig weißt, wird der Abstand rund <b>2,5-mal so lang</b>. Bei „Leicht“ wächst er schneller, bei „Schwer“ langsamer. Bei „Nochmal“ fängt die Karte wieder von vorn an.</li>
+        <li><b>„Sicher“ ab 3 Wochen.</b> Liegt die nächste Wiederholung 21 Tage oder weiter in der Zukunft, zählt die Karte als sicher. Sie kommt trotzdem wieder – in immer größeren Abständen, bis zu einem Jahr.</li>
+        <li><b>Jede Runde:</b> zuerst die heute fälligen Karten, dann die eingestellte Zahl neuer Karten${HAS_SRC ? " – bei „Wichtigste zuerst“ die am häufigsten geprüften zuerst" : ""}.</li>
+      </ol>
+      <p style="margin:12px 0 6px;font-weight:600;font-size:14px">Beispiel: eine Karte, jedes Mal mit „Gut“ bewertet</p>
+      <div class="mech-tl">
+        <div><b>Tag 0</b><span>neu → wieder in 2 Tagen</span></div>
+        <div><b>Tag 2</b><span>→ in 5 Tagen</span></div>
+        <div><b>Tag 7</b><span>→ in 13 Tagen</span></div>
+        <div class="ok"><b>Tag 20</b><span>→ in 33 Tagen = sicher</span></div>
+        <div class="ok"><b>Tag 53</b><span>→ in ca. 83 Tagen</span></div>
+      </div>
+      <p class="hint" style="margin-top:8px">Nach 4 richtigen Antworten in knapp 3 Wochen sitzt die Karte. Wer „Gut“ drückt, obwohl er es nicht wusste, verschiebt die Karte zu weit nach hinten – deshalb ist ehrliches Bewerten so wichtig. Alles wird nur auf diesem Gerät gespeichert.</p>
+    </section>`;
+  }
+  function famNeu(x) {
+    if (x.current) return CARDS.filter(c => !stateOf(c.id)).length;
+    try { const o = JSON.parse(localStorage.getItem("pocketlearn-karten:" + x.id) || "{}"); return Math.max(0, (x.n || 0) - Object.keys(o.cards || {}).length); } catch (e) { return x.n || 0; }
+  }
+  function setNewFor(x, n) {
+    if (x.current) { S.settings.newPerSession = n; if (HAS_SRC) S.settings.order = "wichtig"; save(); return; }
+    try { const k = "pocketlearn-karten:" + x.id, o = JSON.parse(localStorage.getItem(k) || "{}");
+      o.cards = o.cards || {}; o.settings = Object.assign({ mode: "frage", cat: "all", newPerSession: 10, order: "wichtig" }, o.settings || {}, { newPerSession: n, order: "wichtig" });
+      localStorage.setItem(k, JSON.stringify(o)); } catch (e) {}
+  }
   function renderWelcome() {
     showChrome(false); Q = null;
-    const dStr = examDate(), P = planFor(dStr);
     const fam = Array.isArray(D.meta.family) && D.meta.family.length > 1 ? D.meta.family : null;
+    const areas = fam || [{ label: D.meta.title, current: true, n: CARDS.length }];
+    const dStr = examDate();
+    const plans = areas.map(x => ({ x, P: planFor(dStr, famNeu(x)) }));
+    const exam = (D.meta.subtitle || "").split(" · ")[0];
+    const logo = fam ? fam[0].href + "icon-192.png" : "icon-192.png";
+    const p0 = plans[0].P;
+    let planHtml;
+    if (!p0) planHtml = `<p class="hint">Mit dem Datum rechnet die App für ${fam ? "jeden Prüfungsbereich" : "dich"} aus, wie viele neue Karten du pro Tag brauchst, und stellt das gleich ein.</p>`;
+    else if (!p0.set || p0.days <= 7) planHtml = `<div class="res${p0.warn ? " warn" : ""}">${p0.msg}</div>`;
+    else planHtml = `<div class="res${plans.some(y => y.P && y.P.warn) ? " warn" : ""}">Noch <b>${p0.days} Tage</b> bis zur Prüfung. So viele neue Karten brauchst du pro Tag:
+        <ul style="margin:8px 0 4px;padding-left:1.2em">${plans.map(({ x, P }) => `<li><b>${esc(x.label)}: ${P && P.set ? P.set : 0} pro Tag</b> <span style="color:var(--muted)">(${P && P.neu != null ? P.neu : 0} Karten neu${P && P.endIntro ? ", alle einmal gelernt bis " + fmtDate(P.endIntro) : ""})</span></li>`).join("")}</ul>
+        ${plans.some(y => y.P && y.P.warn) ? "<b>Achtung, knapp:</b> Lass „Wichtigste zuerst“ eingestellt – dann kannst du auf jeden Fall die häufigsten Themen." : "Danach bleiben rund 3 Wochen zum Festigen und eine Woche zum Wiederholen."}</div>`;
     $("#app").innerHTML = `
       <section class="wel">
         <div>
-          <img class="logo" src="icon-192.png" alt="" width="84" height="84">
+          <img class="logo" src="${esc(logo)}" alt="" width="84" height="84">
           <h1>Willkommen bei deinen Lernkarten</h1>
-          <p class="lead">${esc((D.meta.subtitle || "").split(" · ")[0])}${fam ? ", Prüfungsbereich" : ""} <b>${esc(D.meta.title)}</b>: ${CARDS.length} Karten${HAS_SRC ? ", ausgewertet aus den echten IHK-Prüfungen" : ""}.${fam ? ` Den Bereich ${fam.filter(x => !x.current).map(x => esc(x.label)).join(", ")} erreichst du später oben über den Umschalter.` : ""} Lies dir das einmal kurz durch, bevor du loslegst.</p>
+          <p class="lead">${fam ? `Lernkarten zur ${esc(exam)} mit ${fam.length} Prüfungsbereichen: ${fam.map(x => `<b>${esc(x.label)}</b> (${x.n} Karten)`).join(" und ")}` : `<b>${esc(D.meta.title)}</b>: ${CARDS.length} Karten`}${HAS_SRC ? ", ausgewertet aus den echten IHK-Prüfungen" : ""}. Lies dir das einmal kurz durch, bevor du loslegst.</p>
         </div>
         <section>
           <h2 style="font-size:20px;margin-bottom:10px">So funktioniert's</h2>
@@ -733,24 +794,31 @@ footer a { color: inherit; }
         <section>
           <h2 style="font-size:20px;margin-bottom:10px">Die 3 Grundregeln</h2>
           <ul class="rl">
-            <li><b>Jeden Tag eine Runde</b> – 15 bis 20 Minuten reichen.</li>
+            <li><b>Jeden Tag eine Runde</b> – 15 bis 20 Minuten${fam ? " je Prüfungsbereich" : ""} reichen.</li>
             <li><b>Zuerst die fälligen Karten</b> – „Runde starten“ macht das automatisch.</li>
             <li><b>Ehrlich bewerten</b> – nur so kommt jede Karte zur richtigen Zeit wieder.</li>
           </ul>
         </section>
+        ${mechanismHtml()}
         <section class="plan">
           <div class="field"><label for="welExam">Wann ist deine Prüfung? <span style="font-weight:400;color:var(--muted)">(freiwillig)</span></label>
             <input type="date" id="welExam" value="${esc(dStr)}"></div>
-          ${P ? `<div class="res${P.warn ? " warn" : ""}">${P.set ? `<span class="big">${P.set} neue Karten pro Tag</span>` : ""}${P.msg}</div>`
-            : `<p class="hint">Mit dem Datum rechnet die App aus, wie viele neue Karten du pro Tag brauchst, und stellt das gleich ein.</p>`}
+          ${planHtml}
         </section>
-        <button class="btn primary" id="welGo">Los geht's</button>
+        ${fam ? `<section><h2 style="font-size:20px;margin-bottom:10px">Womit möchtest du anfangen?</h2>
+            <div class="wel-go">${fam.map((x, i) => `<button class="btn primary" data-go="${i}">${esc(x.label)}</button>`).join("")}</div>
+            <p class="hint" style="margin-top:8px">Den anderen Bereich erreichst du jederzeit oben über den Umschalter „Prüfungsbereich“.</p></section>`
+          : `<button class="btn primary" data-go="0">Los geht's</button>`}
         <button class="more" id="welMore">Mehr zur Lernstrategie</button>
       </section>`;
     $("#welExam").onchange = e => { try { if (e.target.value) localStorage.setItem(EXAM_KEY, e.target.value); else localStorage.removeItem(EXAM_KEY); } catch (er) {} renderWelcome(); };
-    const apply = () => { setWelcomeSeen(); if (P && P.set) { S.settings.newPerSession = P.set; if (HAS_SRC) S.settings.order = "wichtig"; save(); } showChrome(true); };
-    $("#welGo").onclick = () => { apply(); renderHome(); window.scrollTo(0, 0); if (P && P.set) toast(P.set + " neue Karten pro Runde eingestellt"); };
-    $("#welMore").onclick = () => { apply(); renderGuide(); window.scrollTo(0, 0); };
+    const apply = () => { setWelcomeSeen(); plans.forEach(({ x, P }) => { if (P && P.set) setNewFor(x, P.set); }); };
+    document.querySelectorAll("[data-go]").forEach(b => b.onclick = () => {
+      apply(); const x = areas[+b.dataset.go];
+      if (x.current) { showChrome(true); renderHome(); window.scrollTo(0, 0); const P = plans[+b.dataset.go].P; if (P && P.set) toast(P.set + " neue Karten pro Runde eingestellt"); }
+      else location.href = x.href;
+    });
+    $("#welMore").onclick = () => { apply(); showChrome(true); renderGuide(); window.scrollTo(0, 0); };
   }
 
   function renderSettings(confirmReset) {

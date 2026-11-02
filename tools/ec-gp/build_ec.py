@@ -2,9 +2,11 @@
 Aufruf: python3 build_ec.py <app.html> <zielordner_server> <ziel_artifact.html>
 """
 import json, sys, os, importlib
-FAMILY = [{"label": "Geschäftsprozesse", "href": "/", "current": True}, {"label": "Kundenkommunikation", "href": "/kk/"}]
 sys.path.insert(0, os.path.dirname(__file__))
-parts = ["k1_vertrieb_recht_projekt", "k2_sortiment_kalkulation", "k3_marketing", "k4_controlling", "k5_rechnen"]
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
+from family import family, parts as family_parts
+FAMILY = family("ec-gp")
+parts = family_parts("ec-gp")
 cards = []
 for p in parts:
     for (cid, cat, term, q, short, long, src) in importlib.import_module(p).CARDS:
@@ -53,7 +55,7 @@ head_extra = ('<link rel="manifest" href="manifest.webmanifest">\n'
               '<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}[hidden]{display:none!important}</style>\n')
 foot = '<script>if("serviceWorker" in navigator){navigator.serviceWorker.register("sw.js").catch(function(){});}</script>\n</body>\n</html>\n'
 srv = head + tpl.replace("<!--HEADEXTRA-->", head_extra).replace('<header class="top">', '</head>\n<body>\n<header class="top">', 1) \
-    .replace("<!--DECK-->", '<script src="deck.js?v=6"></script>').replace("<!--FOOTEXTRA-->", foot)
+    .replace("<!--DECK-->", '<script src="deck.js?v=7"></script>').replace("<!--FOOTEXTRA-->", foot)
 open(os.path.join(out, "index.html"), "w", encoding="utf8").write(srv)
 open(os.path.join(out, "deck.js"), "w", encoding="utf8").write(deck_js)
 json.dump({"name": "E-Commerce Prüfungskarten", "short_name": "EC-Prüfung",
@@ -64,7 +66,7 @@ json.dump({"name": "E-Commerce Prüfungskarten", "short_name": "EC-Prüfung",
                      {"src": "icon-512.png", "sizes": "512x512", "type": "image/png"}]},
           open(os.path.join(out, "manifest.webmanifest"), "w", encoding="utf8"), ensure_ascii=False, indent=2)
 open(os.path.join(out, "sw.js"), "w", encoding="utf8").write(
-    'const C="ec-gp-v6";const F=["./","./index.html","./deck.js?v=6","./manifest.webmanifest","./icon-192.png","./icon-512.png"];\n'
+    'const C="ec-gp-v7";const F=["./","./index.html","./deck.js?v=7","./manifest.webmanifest","./icon-192.png","./icon-512.png"];\n'
     'self.addEventListener("install",e=>{e.waitUntil(caches.open(C).then(c=>c.addAll(F)).then(()=>self.skipWaiting()))});\n'
     'self.addEventListener("activate",e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==C&&(x.indexOf(\"ec-gp\")===0||x===\"lernkarten-v1\")).map(x=>caches.delete(x)))).then(()=>self.clients.claim()))});\n'
     'self.addEventListener("fetch",e=>{if(e.request.method!=="GET")return;e.respondWith(fetch(e.request).then(r=>{const cp=r.clone();caches.open(C).then(c=>c.put(e.request,cp));return r}).catch(()=>caches.match(e.request)))});\n')
