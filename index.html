@@ -38,6 +38,7 @@
   --risk-prohibited: #b91c1c; --risk-high: #d97706; --risk-limited: #b45309; --risk-minimal: #15803d; --risk-systemic: #6d28d9;
   --cat-ai-act-core: #162447; --cat-ml: #0e7490; --cat-dl: #6d28d9; --cat-llm: #be185d; --cat-nlp: #047857;
   --cat-cv: #c2410c; --cat-ethics: #9c7f3f; --cat-governance: #1e3a8a; --cat-security: #b91c1c;
+  --k0: #0e7490; --k1: #6d28d9; --k2: #b45309; --k3: #be185d; --k4: #047857; --k5: #1e3a8a; --k6: #c2410c; --k7: #9c7f3f; --k8: #b91c1c;
   --shadow: 0 1px 2px rgba(10,22,40,.06), 0 8px 28px rgba(10,22,40,.08);
   --f-display: "Fraunces", Georgia, "Times New Roman", serif;
   --f-body: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -51,6 +52,8 @@
     --risk-prohibited: #f87171; --risk-high: #fbbf24; --risk-limited: #fcd34d; --risk-minimal: #4ade80; --risk-systemic: #c4b5fd;
     --cat-ai-act-core: #93a5d6; --cat-ml: #67e8f9; --cat-dl: #c4b5fd; --cat-llm: #f9a8d4; --cat-nlp: #6ee7b7;
     --cat-cv: #fdba74; --cat-ethics: #e2c98f; --cat-governance: #a5b4fc; --cat-security: #fca5a5;
+  --k0: #67e8f9; --k1: #c4b5fd; --k2: #fcd34d; --k3: #f9a8d4; --k4: #6ee7b7; --k5: #a5b4fc; --k6: #fdba74; --k7: #e2c98f; --k8: #fca5a5;
+    --k0: #67e8f9; --k1: #c4b5fd; --k2: #fcd34d; --k3: #f9a8d4; --k4: #6ee7b7; --k5: #a5b4fc; --k6: #fdba74; --k7: #e2c98f; --k8: #fca5a5;
     --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 28px rgba(0,0,0,.35);
     color-scheme: dark;
   }
@@ -269,7 +272,8 @@ footer a { color: inherit; }
   const $ = s => document.querySelector(s);
   const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const catName = c => D.meta.categories[c] || c;
-  const catVar = c => `--c: var(--cat-${c}, var(--muted))`;
+  const CAT_KEYS = Object.keys(D.meta.categories);
+  const catVar = c => `--c: var(--cat-${c}, var(--k${Math.max(0, CAT_KEYS.indexOf(c)) % 9}))`;
   function pool() { return S.settings.cat === "all" ? CARDS : CARDS.filter(c => c.cat === S.settings.cat); }
   function toast(msg) { const t = $("#toast"); t.textContent = msg; t.hidden = false; clearTimeout(toast.t); toast.t = setTimeout(() => t.hidden = true, 2200); }
   function setNav(v) { document.querySelectorAll(".nav button").forEach(b => b.setAttribute("aria-current", b.dataset.view === v ? "true" : "false")); }
@@ -375,7 +379,7 @@ footer a { color: inherit; }
         ${mode === "frage" ? `<div class="term-line">${esc(c.term)}</div>` : ""}
         <p class="short">${esc(c.short)}</p>
         <button class="explain-toggle" id="explainBtn" aria-expanded="${Q.explained}">${Q.explained ? "Erklärung ausblenden" : "Erklärung anzeigen"}</button>
-        ${Q.explained ? `<div class="long"><span class="sub">Erklärung</span><p>${esc(c.long)}</p>${relHtml}${links}</div>` : ""}
+        ${Q.explained ? `<div class="long"><span class="sub">Erklärung</span><p>${esc(c.long)}</p>${relHtml}${links}${c.src ? `<span class="sub">${esc(D.meta.srcLabel || "Quelle")}: ${esc(c.src)}</span>` : ""}</div>` : ""}
       </div>`;
     }
     const grades = [["Nochmal", "--again"], ["Schwer", "--hard"], ["Gut", "--good"], ["Leicht", "--easy"]];
@@ -458,7 +462,7 @@ footer a { color: inherit; }
       const st = status(c.id), open = B.open === c.id;
       return `<div class="row"><button data-open="${c.id}" aria-expanded="${open}" style="${catVar(c.cat)}">
           <span class="dot"></span><span class="t">${esc(c.term)}<span class="q">${esc(c.q)}</span></span><span class="st" data-s="${st}">${st}</span>
-        </button>${open ? `<div class="body"><p class="short">${esc(c.short)}</p><p class="longtxt">${esc(c.long)}</p></div>` : ""}</div>`;
+        </button>${open ? `<div class="body"><p class="short">${esc(c.short)}</p><p class="longtxt">${esc(c.long)}</p>${c.src ? `<p class="hint">${esc(D.meta.srcLabel || "Quelle")}: ${esc(c.src)}</p>` : ""}</div>` : ""}</div>`;
     }).join("") : `<p class="empty">Keine Karte passt zu „${esc(B.q)}“.</p>`;
     document.querySelectorAll("[data-open]").forEach(b => b.onclick = () => { B.open = B.open === b.dataset.open ? null : b.dataset.open; drawList(); });
   }
@@ -518,7 +522,7 @@ footer a { color: inherit; }
     else if (["1", "2", "3", "4"].includes(e.key) && Q.revealed) rate(+e.key - 1);
   });
   $("#deckTitle").textContent = D.meta.title;
-  $("#foot").innerHTML = `Inhalte: <a href="${esc(D.meta.source)}" target="_blank" rel="noopener">${esc(D.meta.sourceLabel)}</a> · ${esc(D.meta.publisher)}`;
+  $("#foot").innerHTML = (D.meta.source ? `Inhalte: <a href="${esc(D.meta.source)}" target="_blank" rel="noopener">${esc(D.meta.sourceLabel)}</a>` : esc(D.meta.sourceLabel)) + ` · ${esc(D.meta.publisher)}`;
   renderHome();
 })();
 </script>

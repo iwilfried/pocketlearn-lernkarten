@@ -1,0 +1,250 @@
+modellbewertung	Was umfasst eine Modellbewertung (Model Evaluation)?
+inverkehrbringen	Was bedeuten „Inverkehrbringen“ und „Inbetriebnahme“ im AI Act?
+extraterritorialitaet	Wann gilt der AI Act auch für Unternehmen außerhalb der EU (Marktortprinzip)?
+open-source-ausnahme	Welche Ausnahmen gelten für Open-Source-KI?
+wissenschaftsausnahme	Was regelt die Forschungs- und Entwicklungsausnahme?
+wasserzeichen	Wie müssen KI-generierte Inhalte gekennzeichnet werden?
+test-realbedingungen	Unter welchen Bedingungen dürfen KI-Systeme unter Realbedingungen getestet werden?
+trustworthy-ai	Was versteht man unter vertrauenswürdiger KI (Trustworthy AI)?
+verhaltenskodex	Was sind freiwillige Verhaltenskodizes nach Art. 95?
+ki-agent	Was ist ein KI-Agent (Agentic AI)?
+tool-use	Was bedeutet Werkzeugnutzung (Tool-Use) bei KI-Modellen?
+function-calling	Was ist Function Calling?
+mcp	Was ist das Model Context Protocol (MCP)?
+multimodalitaet	Was bedeutet Multimodalität bei KI-Modellen?
+kontextfenster	Was ist das Kontextfenster eines Sprachmodells?
+reasoning-modell	Was ist ein Reasoning-Modell?
+chain-of-thought	Was ist Chain-of-Thought?
+mixture-of-experts	Was ist Mixture of Experts (MoE)?
+pretraining	Was passiert beim Vortraining (Pretraining)?
+instruction-tuning	Was ist Instruction Tuning?
+alignment	Was bedeutet Alignment bei KI?
+dpo	Was ist Direct Preference Optimization (DPO)?
+constitutional-ai	Was ist Constitutional AI?
+quantisierung	Was ist Quantisierung bei KI-Modellen?
+distillation	Was ist Wissensdestillation (Distillation)?
+benchmark	Was ist ein Benchmark in der KI?
+guardrails	Was sind Guardrails bei KI-Systemen?
+inferenz	Was bedeutet Inferenz bei KI-Modellen?
+vektordatenbank	Was ist eine Vektordatenbank?
+temperatur	Was bewirkt der Parameter „Temperatur“ bei Sprachmodellen?
+model-context-drift	Was sind Modell- und Datendrift?
+attention	Was ist der Attention-Mechanismus?
+parameter	Was sind die Parameter (Gewichte) eines Modells?
+gradientenabstieg	Was ist Gradientenabstieg?
+backpropagation	Was ist Backpropagation?
+gan	Was ist ein Generative Adversarial Network (GAN)?
+regularisierung	Was ist Regularisierung?
+cross-validation	Was ist Kreuzvalidierung?
+feature-engineering	Was ist Feature Engineering?
+ensemble	Was sind Ensemble-Methoden?
+klassifikation-regression	Was unterscheidet Klassifikation von Regression?
+clustering	Was ist Clustering?
+confusion-matrix	Was ist eine Wahrheitsmatrix (Confusion Matrix)?
+transfer-learning	Was ist Transfer Learning?
+synthetische-daten	Was sind synthetische Daten?
+edge-ai	Was ist Edge-KI (On-Device AI)?
+ki-diagnostik	Was ist KI-gestützte Diagnostik?
+samd	Was ist Software als Medizinprodukt (SaMD)?
+klinische-entscheidungsunterstuetzung	Was ist klinische Entscheidungsunterstützung (CDSS)?
+radiologie-ki	Wie wird KI in der Radiologie eingesetzt?
+arzneimittelforschung-ki	Wie wird KI in der Arzneimittelforschung eingesetzt?
+ehds	Was ist der Europäische Gesundheitsdatenraum (EHDS)?
+algorithmischer-handel	Was ist algorithmischer Handel?
+robo-advisor	Was ist ein Robo-Advisor?
+geldwaescheerkennung	Wie hilft KI bei der Geldwäscheerkennung (AML)?
+betrugserkennung	Wie funktioniert KI-Betrugserkennung?
+dora	Was regelt DORA (Digital Operational Resilience Act)?
+kreditrisikomodell	Was ist ein Kreditrisikomodell?
+autonomes-fahren	Was ist autonomes Fahren, und wie wird es reguliert?
+adas	Was sind Fahrerassistenzsysteme (ADAS)?
+v2x	Was ist Vehicle-to-Everything (V2X)?
+verkehrsmanagement-ki	Wie wird KI im Verkehrsmanagement eingesetzt?
+un-r155	Was regeln UN-R155 und UN-R156?
+people-analytics	Was ist People Analytics?
+skills-matching	Was ist Skills-Matching?
+workforce-planning	Was ist KI-gestützte Personalplanung?
+sentiment-analyse	Was ist Sentiment-Analyse?
+chatbot-kundenservice	Was gilt für Kundenservice-Chatbots?
+predictive-maintenance	Was ist vorausschauende Wartung (Predictive Maintenance)?
+machine-vision-qc	Wie funktioniert Qualitätskontrolle mit Machine Vision?
+digitaler-zwilling	Was ist ein digitaler Zwilling?
+cobot	Was ist ein kollaborativer Roboter (Cobot)?
+prozessoptimierung-ki	Was leistet KI in der Prozessoptimierung?
+supply-chain-ki	Wie wird KI im Lieferkettenmanagement eingesetzt?
+agrar-ki	Wie wird KI in der Landwirtschaft (Precision Farming) genutzt?
+energie-ki	Wie wird KI im Energiesektor (Smart Grid) eingesetzt?
+content-moderation	Was ist KI-Content-Moderation?
+insurtech	Was ist InsurTech?
+legaltech	Was ist LegalTech?
+data-poisoning	Was ist Data Poisoning?
+backdoor-attacke	Was ist ein Backdoor-Angriff auf ein KI-Modell?
+model-inversion	Was ist ein Model-Inversion-Angriff?
+membership-inference	Was ist ein Membership-Inference-Angriff?
+model-extraction	Was ist ein Model-Extraction-Angriff?
+jailbreak	Was ist ein Jailbreak bei Sprachmodellen?
+evasion-attack	Was ist ein Evasion-Angriff?
+supply-chain-security-ki	Was bedeutet KI-Lieferkettensicherheit?
+differential-privacy	Was ist Differential Privacy?
+federated-learning	Was ist föderiertes Lernen (Federated Learning)?
+homomorphe-verschluesselung	Was ist homomorphe Verschlüsselung?
+anonymisierung	Was unterscheidet Anonymisierung von Pseudonymisierung?
+privacy-by-design	Was bedeutet Privacy by Design?
+datenminimierung	Was bedeutet Datenminimierung?
+mlops	Was ist MLOps?
+model-card	Was ist eine Model Card?
+datasheet	Was ist ein Datasheet für Datensätze?
+human-in-the-loop	Was bedeutet Human-in-the-Loop?
+shap-lime	Was sind SHAP und LIME?
+audit-trail	Was ist ein Audit-Trail?
+ai-governance	Was ist KI-Governance im Unternehmen?
+conformity-by-design	Was bedeutet Compliance by Design?
+diskriminierung-ki	Was ist algorithmische Diskriminierung?
+fairness-metriken	Was sind Fairness-Metriken?
+ki-nachhaltigkeit	Was bedeutet Nachhaltigkeit von KI (Green AI)?
+dual-use	Was bedeutet Dual Use bei KI?
+wertekonflikte-ki	Welche Wertekonflikte entstehen bei KI?
+automation-bias	Was ist Automatisierungsbias (Automation Bias)?
+accountability	Was bedeutet Rechenschaftspflicht (Accountability) bei KI?
+explainability-vs-performance	Was ist das Spannungsfeld zwischen Erklärbarkeit und Leistung (Black-Box-Problem)?
+ki-kompetenz-organisation	Wie baut eine Organisation KI-Kompetenz auf?
+red-teaming-vs-blue	Was unterscheidet Red Teaming von Blue Teaming?
+sandbox-datenschutz	Welche Datenschutzregeln gelten für Datenverarbeitung im Reallabor?
+ki-haftung	Wer haftet für Schäden durch KI?
+stemming-lemmatisierung	Was unterscheidet Stemming von Lemmatisierung?
+pos-tagging	Was ist POS-Tagging?
+named-entity-recognition	Was ist Eigennamenerkennung (NER)?
+word-embeddings	Was sind Wort-Einbettungen wie Word2Vec oder GloVe?
+bert	Was ist BERT?
+sprachmodell-ngram	Was ist ein statistisches n-Gramm-Sprachmodell?
+maschinelle-uebersetzung	Wie funktioniert maschinelle Übersetzung?
+textzusammenfassung	Was ist automatische Textzusammenfassung?
+question-answering	Was sind Frage-Antwort-Systeme (Question Answering)?
+spracherkennung-asr	Was ist Spracherkennung (ASR)?
+text-to-speech	Was ist Sprachsynthese (Text-to-Speech)?
+topic-modeling	Was ist Themenmodellierung (Topic Modeling)?
+textklassifikation	Was ist Textklassifikation?
+vision-language-model	Was ist ein Vision-Language-Modell (VLM)?
+hate-speech-detection	Wie funktioniert Hassrede-Erkennung?
+bildklassifikation	Was ist Bildklassifikation?
+objekterkennung	Was ist Objekterkennung (Object Detection)?
+bildsegmentierung	Was ist Bildsegmentierung?
+vision-transformer	Was ist ein Vision Transformer (ViT)?
+datenaugmentation	Was ist Datenaugmentation?
+ocr	Was ist Texterkennung (OCR)?
+pose-estimation	Was ist Pose Estimation?
+tiefenschaetzung	Was sind Tiefenschätzung und 3D-Vision?
+gesichtsdetektion	Was unterscheidet Gesichtsdetektion von Gesichtserkennung?
+anomalieerkennung	Was ist Anomalieerkennung?
+image-captioning	Was ist Image Captioning?
+super-resolution	Was ist Super-Resolution?
+optical-flow	Was ist optischer Fluss (Optical Flow)?
+keypoint-detection	Was ist Keypoint Detection?
+gestenerkennung	Was ist Gestenerkennung?
+medizinische-bildsegmentierung	Was ist medizinische Bildsegmentierung?
+zeitreihenanalyse	Was ist Zeitreihenanalyse?
+rnn	Was ist ein rekurrentes neuronales Netz (RNN)?
+lstm	Was ist ein LSTM, und welches Problem löst es?
+autoencoder	Was ist ein Autoencoder?
+dimensionsreduktion	Was ist Dimensionsreduktion?
+graph-neural-network	Was ist ein Graph Neural Network (GNN)?
+empfehlungssystem	Was ist ein Empfehlungssystem?
+kollaboratives-filtern	Was ist kollaboratives Filtern?
+knowledge-graph	Was ist ein Wissensgraph (Knowledge Graph)?
+verlustfunktion	Was ist eine Verlustfunktion?
+hyperparameter	Was sind Hyperparameter?
+lernrate	Was ist die Lernrate?
+batch-epoch	Was bedeuten Batch und Epoche beim Training?
+vanishing-gradient	Was sind verschwindende und explodierende Gradienten?
+aktivierungsfunktion	Was ist eine Aktivierungsfunktion?
+batch-normalization	Was bewirken Batch- und Layer-Normalisierung?
+few-shot-learning	Was sind Few-Shot- und Zero-Shot-Lernen?
+belohnungsfunktion	Was ist eine Belohnungsfunktion (Reward Function)?
+q-learning	Was ist Q-Learning?
+policy-gradient	Was sind Policy-Gradient-Verfahren?
+exploration-exploitation	Was bedeutet das Dilemma „Exploration vs. Exploitation“?
+simulationsumgebung	Welche Rolle spielen Simulationsumgebungen beim bestärkenden Lernen?
+entscheidungsbaum	Was ist ein Entscheidungsbaum?
+svm	Was ist eine Support Vector Machine (SVM)?
+naive-bayes	Was ist Naive Bayes?
+knn	Wie funktioniert k-nächste-Nachbarn (k-NN)?
+bayessche-statistik	Was ist bayessche Statistik?
+korrelation-kausalitaet	Was unterscheidet Korrelation von Kausalität?
+imbalanced-data	Was sind unausgewogene Daten (Class Imbalance)?
+data-leakage	Was ist Datenleckage (Data Leakage)?
+explainable-boosting	Was sind interpretierbare Glass-Box-Modelle?
+ground-truth	Was ist Ground Truth?
+concept-drift-detection	Wie funktioniert Drifterkennung?
+active-learning	Was ist aktives Lernen (Active Learning)?
+self-supervised-learning	Was ist selbstüberwachtes Lernen?
+oecd-ki-prinzipien	Was sind die OECD-KI-Prinzipien?
+oecd-ki-definition	Wie definiert die OECD ein KI-System?
+g7-hiroshima	Was ist der G7-Hiroshima-KI-Prozess?
+un-ki-resolution	Was beinhalten die UN-Resolutionen zu KI?
+global-digital-compact	Was ist der Global Digital Compact?
+unesco-ki-ethik	Was ist die UNESCO-Empfehlung zur Ethik der KI?
+europarat-ki-konvention	Was ist die KI-Konvention des Europarats?
+global-partnership-ai	Was ist die Global Partnership on AI (GPAI)?
+ai-safety-summits	Was ist die Reihe der KI-Sicherheitsgipfel?
+bletchley-erklaerung	Was ist die Bletchley-Erklärung?
+frontier-ai-commitments	Was sind die Frontier AI Safety Commitments?
+netzwerk-safety-institutes	Was ist das Netzwerk der KI-Sicherheitsinstitute?
+usa-ki-regulierung	Wie wird KI in den USA reguliert?
+us-executive-orders-ki	Welche Rolle spielen US-Executive-Orders zu KI?
+nist-ai-rmf	Was ist das NIST AI Risk Management Framework?
+us-bundesstaaten-ki	Welche KI-Gesetze gibt es in den US-Bundesstaaten?
+federal-preemption-ki	Was bedeutet bundesrechtliche Vorrangwirkung (Preemption) bei KI in den USA?
+china-ki-regulierung	Wie reguliert China KI?
+cac	Was ist die Cyberspace Administration of China (CAC)?
+china-genai-massnahmen	Welche Regeln gelten in China für generative KI?
+china-deep-synthesis	Was regeln Chinas Deep-Synthesis-Vorschriften?
+china-kennzeichnung	Welche Kennzeichnungsregeln gelten in China für KI-Inhalte?
+china-algorithmus-registrierung	Was ist die Algorithmus-Registrierung in China?
+uk-ki-regulierung	Wie reguliert das Vereinigte Königreich KI?
+ai-security-institute	Was ist das AI Security Institute (UK)?
+duaa	Was regelt der Data (Use and Access) Act 2025 (UK)?
+kanada-aida	Was ist AIDA in Kanada?
+suedkorea-ki-gesetz	Was regelt das KI-Grundgesetz Südkoreas?
+brasilien-ki-gesetz	Wie steht es um die KI-Gesetzgebung in Brasilien?
+digital-omnibus	Was ist der Digital Omnibus zur KI?
+bruessel-effekt	Was ist der Brüssel-Effekt?
+ki-souveraenitaet	Was bedeutet KI-Souveränität?
+compute-governance	Was sind Compute-Governance und Exportkontrollen bei KI?
+interoperabilitaet-regulierung	Was bedeuten regulatorische Interoperabilität und Divergenz bei KI?
+deutschland-ki-aufsicht	Wie ist die KI-Aufsicht in Deutschland organisiert?
+bundesnetzagentur-ki	Welche Rolle hat die Bundesnetzagentur bei der KI-Aufsicht?
+kokivo	Was ist KoKIVO?
+bafin-ki	Welche Rolle spielt die BaFin bei KI im Finanzsektor?
+landesmedienanstalten-ki	Welche Rolle spielen die Landesmedienanstalten bei KI in Medien?
+oesterreich-ki-aufsicht	Wie ist die KI-Aufsicht in Österreich organisiert?
+rtr-ki-servicestelle	Was ist die KI-Servicestelle der RTR in Österreich?
+dsb-oesterreich	Welche Rolle hat die österreichische Datenschutzbehörde bei KI?
+kommaustria-ki	Welche Rolle hat die KommAustria bei KI in Medien?
+frankreich-ki-aufsicht	Wie ist die KI-Aufsicht in Frankreich organisiert?
+cnil-ki	Welche Rolle hat die CNIL bei der KI-Aufsicht in Frankreich?
+arcom-ki	Welche Rolle hat ARCOM bei KI in Medien in Frankreich?
+dgccrf-ki	Welche Rolle hat die DGCCRF bei KI in Frankreich?
+europaeischer-ki-ausschuss	Was ist der Europäische Ausschuss für KI (AI Board)?
+wissenschaftliches-gremium	Was ist das wissenschaftliche Gremium (Scientific Panel)?
+grundrechtebehoerden	Welche Befugnisse haben Grundrechtebehörden nach Art. 77?
+nationale-kontaktstelle	Was ist die einzige nationale Kontaktstelle im AI Act?
+konformitaetsbewertungsverfahren	Welche Konformitätsbewertungsverfahren gibt es für Hochrisiko-KI?
+turing-test	Was ist der Turing-Test?
+agi	Was ist künstliche allgemeine Intelligenz (AGI)?
+symbolische-ki	Was ist symbolische KI (GOFAI)?
+expertensysteme	Was sind Expertensysteme?
+ki-winter	Was ist ein „KI-Winter“?
+skalierungsgesetze	Was sind Skalierungsgesetze (Scaling Laws)?
+emergente-faehigkeiten	Was sind emergente Fähigkeiten von KI-Modellen?
+technologische-singularitaet	Was ist die technologische Singularität?
+superintelligenz	Was ist Superintelligenz?
+existenzielles-risiko	Was versteht man unter existenziellem Risiko durch KI?
+anthropomorphismus	Was ist Anthropomorphismus bei KI?
+digitale-kluft	Was ist die digitale Kluft bei KI?
+weltmodell	Was ist ein Weltmodell (World Model)?
+verkoerperte-ki	Was ist verkörperte KI (Embodied AI)?
+neuromorphes-computing	Was ist neuromorphes Computing?
+quanten-maschinelles-lernen	Was ist quanten-maschinelles Lernen?
+ki-bewusstsein	Worum geht es in der Debatte über maschinelles Bewusstsein?
+stochastischer-papagei	Was meint der Begriff „stochastischer Papagei“?
+ki-lebenszyklus	Welche Phasen umfasst der KI-Lebenszyklus?

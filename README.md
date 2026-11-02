@@ -5,6 +5,8 @@ Erstes Kartenset: **EU AI Act** mit 380 Begriffen aus dem [EU AI Act Glossar](ht
 
 Live: https://karten.pocketlearn.online/
 
+Zweites Kartenset: **E-Commerce Prüfung** (Teil 2 der Abschlussprüfung Kaufmann/Kauffrau im E-Commerce, Geschäftsprozesse) mit 164 Karten im Ordner `ec-gp/` – live unter https://karten.pocketlearn.online/ec-gp/. Ausgewertet wurden die IHK-Prüfungen 2020–2025; alle Texte sind eigene Formulierungen, die Rechenaufgaben haben eigene Zahlen. Bauskripte: `tools/ec-gp/`.
+
 ## Funktionen
 
 - Vorderseite umschaltbar: Frage oder nur Begriff

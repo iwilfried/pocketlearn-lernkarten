@@ -1,0 +1,130 @@
+eu-ai-act	Was ist der EU AI Act, und nach welchem Grundprinzip regelt er KI?
+ki-system	Wie definiert der AI Act ein „KI-System“?
+gpai	Was ist ein KI-Modell mit allgemeinem Verwendungszweck (GPAI)?
+anbieter	Wer gilt im AI Act als „Anbieter“?
+betreiber	Wer gilt im AI Act als „Betreiber“ eines KI-Systems?
+verbotene-praktiken	Welche KI-Praktiken verbietet Art. 5 des AI Act?
+hochrisiko-ki	Wann gilt ein KI-System als Hochrisiko-KI-System?
+begrenztes-risiko	Was kennzeichnet die Risikostufe „begrenztes Risiko“?
+minimales-risiko	Welche KI-Systeme fallen unter „minimales Risiko“, und welche Pflichten gelten dafür?
+systemisches-risiko	Was versteht der AI Act unter „systemischem Risiko“?
+konformitaetsbewertung	Was ist eine Konformitätsbewertung im Sinne des AI Act?
+ce-kennzeichnung	Welche Funktion hat die CE-Kennzeichnung bei Hochrisiko-KI?
+menschliche-aufsicht	Was verlangt der AI Act unter „menschlicher Aufsicht“?
+ki-kompetenz	Was verlangt die Pflicht zur KI-Kompetenz (Art. 4) von Anbietern und Betreibern?
+ai-office	Was ist das AI Office, und welche Aufgaben hat es?
+fria	Was ist eine Grundrechte-Folgenabschätzung (FRIA), und wer muss sie durchführen?
+reallabor	Was ist ein KI-Reallabor (Regulatory Sandbox)?
+transparenzpflichten	Welche Transparenzpflichten sieht der AI Act vor?
+ki	Was versteht man unter Künstlicher Intelligenz (KI)?
+ml	Was ist maschinelles Lernen?
+ueberwacht	Was ist überwachtes Lernen?
+unueberwacht	Was ist unüberwachtes Lernen?
+rl	Wie funktioniert bestärkendes Lernen (Reinforcement Learning)?
+trainingsdaten	Was sind Trainingsdaten, und warum ist ihre Qualität so wichtig?
+overfitting	Was bedeutet Overfitting (Überanpassung)?
+deep-learning	Was ist Deep Learning?
+nn	Was ist ein künstliches neuronales Netz?
+cnn	Was ist ein Faltungsnetzwerk (CNN), und wofür wird es eingesetzt?
+transformer	Was ist die Transformer-Architektur?
+embedding	Was ist ein Embedding?
+diffusion	Wie funktioniert ein Diffusionsmodell?
+llm	Was ist ein großes Sprachmodell (LLM)?
+foundation-model	Was ist ein Foundation Model (Basismodell)?
+generative-ai	Was ist generative KI?
+prompt-engineering	Was ist Prompt Engineering?
+rag	Was ist RAG (Retrieval-Augmented Generation)?
+fine-tuning	Was ist Fine-Tuning?
+rlhf	Was ist RLHF, und wozu dient es?
+halluzination	Was ist eine Halluzination bei KI-Modellen?
+nlp	Was ist NLP (Verarbeitung natürlicher Sprache)?
+tokenization	Was bedeutet Tokenisierung?
+computer-vision	Was ist Computer Vision?
+gesichtserkennung	Was ist Gesichtserkennung, und wie behandelt der AI Act sie?
+image-generation	Was ist Bildgenerierung durch KI?
+bias	Was ist algorithmischer Bias?
+fairness	Was bedeutet Fairness bei KI-Systemen?
+xai	Was ist erklärbare KI (XAI)?
+deepfake	Was ist ein Deepfake?
+dsgvo	Was ist die DSGVO?
+iso-42001	Was regelt die Norm ISO/IEC 42001?
+prompt-injection	Was ist eine Prompt Injection?
+adversarial	Was sind adversariale Angriffe?
+ai-red-teaming	Was ist AI Red Teaming?
+einfuehrer	Wer ist im AI Act ein „Einführer“?
+haendler	Wer ist im AI Act ein „Händler“?
+bevollmaechtigter	Wer ist im AI Act ein „Bevollmächtigter“?
+provider-flip	Was bedeutet „Provider Flip“ im AI Act?
+wesentliche-aenderung	Was ist eine „wesentliche Änderung“ eines KI-Systems?
+downstream-anbieter	Wer ist ein nachgelagerter Anbieter (Downstream-Anbieter)?
+betroffene-person	Wer ist im AI Act eine „betroffene Person“?
+kmu	Welche Sonderregeln sieht der AI Act für KMU und Start-ups vor?
+marktueberwachung	Was ist eine Marktüberwachungsbehörde im AI Act?
+notifizierende-behoerde	Was ist eine notifizierende Behörde?
+notifizierte-stelle	Was ist eine notifizierte Stelle?
+eu-datenbank	Was ist die EU-Datenbank für Hochrisiko-KI-Systeme?
+anhang-i	Was enthält Anhang I des AI Act?
+anhang-iii	Was enthält Anhang III des AI Act?
+anhang-iv	Was regelt Anhang IV des AI Act?
+anhang-ii	Was enthält Anhang II des AI Act?
+risikomanagementsystem	Was verlangt der AI Act beim Risikomanagementsystem?
+daten-governance	Welche Anforderungen stellt der AI Act an Daten-Governance und Datenqualität?
+technische-dokumentation	Was verlangt der AI Act zur technischen Dokumentation?
+aufzeichnungspflicht	Was bedeutet die Aufzeichnungspflicht (Logging) für Hochrisiko-KI?
+genauigkeit-robustheit	Was verlangt der AI Act zu Genauigkeit, Robustheit und Cybersicherheit?
+gebrauchsanweisung	Was muss die Gebrauchsanweisung eines Hochrisiko-KI-Systems leisten?
+post-market-monitoring	Was ist Post-Market-Monitoring?
+schwerwiegender-vorfall	Was ist ein „schwerwiegender Vorfall“ im AI Act?
+harmonisierte-normen	Was sind harmonisierte Normen, und welche Wirkung haben sie?
+bussgeld-art99	Wie ist das Bußgeldsystem des AI Act (Art. 99) aufgebaut?
+bussgeld-gpai	Welche Bußgelder drohen GPAI-Anbietern (Art. 101)?
+bussgeld-behoerden	Können nach dem AI Act Bußgelder gegen Behörden verhängt werden?
+sanktionsbemessung	Nach welchen Kriterien wird eine Sanktion im AI Act bemessen?
+beschwerderecht	Was regelt das Beschwerderecht nach Art. 85?
+erklaerungsrecht	Was beinhaltet das Recht auf Erklärung nach Art. 86?
+whistleblower	Wie schützt der AI Act Hinweisgeber (Art. 87)?
+fristen-anwendung	Nach welchem Zeitplan wird der AI Act anwendbar?
+uebergangsvorschriften	Was regeln die Übergangsvorschriften des AI Act (Art. 111)?
+leitlinien-kommission	Welche Rolle spielen die Leitlinien der Kommission (Art. 96)?
+delegierte-rechtsakte	Was darf die Kommission über delegierte Rechtsakte (Art. 97) regeln?
+dsgvo-schnittstelle	Wie verhalten sich AI Act und DSGVO zueinander?
+dsa-schnittstelle	Wie verhalten sich AI Act und Digital Services Act (DSA) zueinander?
+dma-schnittstelle	Wo berühren sich AI Act und Digital Markets Act (DMA)?
+mdr-schnittstelle	Wie greifen AI Act und Medizinprodukte-Verordnung (MDR/IVDR) ineinander?
+nis2-schnittstelle	Wie ergänzen sich AI Act und NIS-2-Richtlinie?
+cra-schnittstelle	Wie verhalten sich AI Act und Cyber Resilience Act (CRA) zueinander?
+produkthaftung-schnittstelle	Was bedeutet die neue Produkthaftungsrichtlinie für KI-Systeme?
+urheberrecht-schnittstelle	Welche Urheberrechtspflichten legt der AI Act GPAI-Anbietern auf?
+verbraucherschutz-schnittstelle	Wie ergänzen sich AI Act und Verbraucherschutzrecht?
+arbeitsrecht-schnittstelle	Wo überschneiden sich AI Act und Arbeitsrecht?
+wettbewerbsrecht-schnittstelle	Wie verhält sich der AI Act zum Wettbewerbsrecht?
+datenverordnung-schnittstelle	Welche Bedeutung hat die Datenverordnung (Data Act) für KI?
+eu-konformitaetserklaerung	Was ist eine EU-Konformitätserklärung?
+gemeinsame-spezifikationen	Was sind gemeinsame Spezifikationen im AI Act?
+biometrische-identifizierung	Was ist biometrische Fernidentifizierung?
+biometrische-kategorisierung	Was ist biometrische Kategorisierung, und wann ist sie verboten?
+emotionserkennung	Was ist ein Emotionserkennungssystem, und wo ist es verboten?
+biometrische-verifizierung	Was ist biometrische Verifizierung, und wie unterscheidet sie sich von Identifizierung?
+kritische-infrastruktur	Wann ist KI in kritischer Infrastruktur hochriskant?
+ki-bildung	Welche KI-Systeme in der Bildung gelten als Hochrisiko?
+proctoring	Was ist Proctoring, und wie stuft der AI Act es ein?
+ki-beschaeftigung	Welche KI-Systeme im Personalbereich gelten als Hochrisiko?
+cv-screening	Was ist automatisiertes Bewerber-Screening, und wie ist es eingestuft?
+algorithmisches-management	Was ist algorithmisches Management?
+kreditwuerdigkeit	Wie stuft der AI Act KI zur Kreditwürdigkeitsprüfung ein?
+versicherung-scoring	Welche KI-Risikobewertung in Versicherungen gilt als Hochrisiko?
+sozialleistungen	Wie behandelt der AI Act KI bei öffentlichen Sozialleistungen?
+notruf-triage	Wie stuft der AI Act KI in Notdiensten und Triage ein?
+ki-strafverfolgung	Welche Regeln gelten für KI in der Strafverfolgung?
+predictive-policing	Was ist Predictive Policing, und wann ist es verboten?
+ki-migration	Wie behandelt der AI Act KI in Migration, Asyl und Grenzkontrolle?
+ki-justiz	Wie stuft der AI Act KI in der Rechtspflege ein?
+ki-wahlen	Wie behandelt der AI Act KI zur Beeinflussung von Wahlen?
+hochrisiko-ausnahme	Wann ist ein System aus Anhang III ausnahmsweise kein Hochrisiko-System?
+profiling	Was ist Profiling, und welche Folge hat es für die Hochrisiko-Einstufung?
+sicherheitsbauteil	Was ist ein Sicherheitsbauteil im Sinne des AI Act?
+verwendungszweck	Was bedeutet „Zweckbestimmung“ (Intended Purpose)?
+vulnerable-gruppen	Wie schützt der AI Act vulnerable Gruppen?
+manipulative-praktiken	Wann sind manipulative und täuschende KI-Techniken verboten?
+scraping-gesichtsbilder	Was regelt der AI Act zum ungezielten Auslesen von Gesichtsbildern?
+trainingsdaten-zusammenfassung	Was müssen GPAI-Anbieter zu ihren Trainingsdaten veröffentlichen?

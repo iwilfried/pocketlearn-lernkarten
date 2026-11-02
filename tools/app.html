@@ -1,0 +1,515 @@
+<title>EU AI Act Lernkarten</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Lernkarten zum EU AI Act – Frage, Kurzantwort, Erklärung. pocketlearn · Learning Factory.">
+<!--HEADEXTRA-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: eine ruhige Lernspalte (max 720px), Karte als einziges abgesetztes Objekt; Palette und Schriften aus dem pocketlearn-Glossar übernommen */
+:root {
+  --bg: #f8f5ee;
+  --surface: #fffdf8;
+  --surface-2: #efe8d8;
+  --ink: #0a1628;
+  --ink-2: #1c2d4a;
+  --muted: #5a6470;
+  --rule: rgba(22, 36, 71, .12);
+  --rule-strong: rgba(22, 36, 71, .24);
+  --accent: #9c7f3f;
+  --accent-soft: rgba(200, 169, 106, .22);
+  --on-ink: #f8f5ee;
+  --again: #b91c1c;
+  --hard: #b45309;
+  --good: #0e7490;
+  --easy: #15803d;
+  --risk-prohibited: #b91c1c; --risk-high: #d97706; --risk-limited: #b45309; --risk-minimal: #15803d; --risk-systemic: #6d28d9;
+  --cat-ai-act-core: #162447; --cat-ml: #0e7490; --cat-dl: #6d28d9; --cat-llm: #be185d; --cat-nlp: #047857;
+  --cat-cv: #c2410c; --cat-ethics: #9c7f3f; --cat-governance: #1e3a8a; --cat-security: #b91c1c;
+  --k0: #0e7490; --k1: #6d28d9; --k2: #b45309; --k3: #be185d; --k4: #047857; --k5: #1e3a8a; --k6: #c2410c; --k7: #9c7f3f; --k8: #b91c1c;
+  --shadow: 0 1px 2px rgba(10,22,40,.06), 0 8px 28px rgba(10,22,40,.08);
+  --f-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --f-body: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0a1628; --surface: #14213d; --surface-2: #1c2d4a; --ink: #f0e9d8; --ink-2: #d4cdb8; --muted: #9aa3ae;
+    --rule: rgba(248,245,238,.10); --rule-strong: rgba(248,245,238,.22); --accent: #c8a96a; --accent-soft: rgba(200,169,106,.16);
+    --on-ink: #0a1628; --again: #f87171; --hard: #fbbf24; --good: #67e8f9; --easy: #4ade80;
+    --risk-prohibited: #f87171; --risk-high: #fbbf24; --risk-limited: #fcd34d; --risk-minimal: #4ade80; --risk-systemic: #c4b5fd;
+    --cat-ai-act-core: #93a5d6; --cat-ml: #67e8f9; --cat-dl: #c4b5fd; --cat-llm: #f9a8d4; --cat-nlp: #6ee7b7;
+    --cat-cv: #fdba74; --cat-ethics: #e2c98f; --cat-governance: #a5b4fc; --cat-security: #fca5a5;
+  --k0: #67e8f9; --k1: #c4b5fd; --k2: #fcd34d; --k3: #f9a8d4; --k4: #6ee7b7; --k5: #a5b4fc; --k6: #fdba74; --k7: #e2c98f; --k8: #fca5a5;
+    --k0: #67e8f9; --k1: #c4b5fd; --k2: #fcd34d; --k3: #f9a8d4; --k4: #6ee7b7; --k5: #a5b4fc; --k6: #fdba74; --k7: #e2c98f; --k8: #fca5a5;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 28px rgba(0,0,0,.35);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0a1628; --surface: #14213d; --surface-2: #1c2d4a; --ink: #f0e9d8; --ink-2: #d4cdb8; --muted: #9aa3ae;
+  --rule: rgba(248,245,238,.10); --rule-strong: rgba(248,245,238,.22); --accent: #c8a96a; --accent-soft: rgba(200,169,106,.16);
+  --on-ink: #0a1628; --again: #f87171; --hard: #fbbf24; --good: #67e8f9; --easy: #4ade80;
+  --risk-prohibited: #f87171; --risk-high: #fbbf24; --risk-limited: #fcd34d; --risk-minimal: #4ade80; --risk-systemic: #c4b5fd;
+  --cat-ai-act-core: #93a5d6; --cat-ml: #67e8f9; --cat-dl: #c4b5fd; --cat-llm: #f9a8d4; --cat-nlp: #6ee7b7;
+  --cat-cv: #fdba74; --cat-ethics: #e2c98f; --cat-governance: #a5b4fc; --cat-security: #fca5a5;
+  --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 28px rgba(0,0,0,.35);
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { background: var(--bg); color: var(--ink); }
+body {
+  font-family: var(--f-body); font-size: 16px; line-height: 1.55;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0 48px;
+  -webkit-font-smoothing: antialiased;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.wrap { max-width: 720px; margin: 0 auto; }
+button, input, select, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
+
+/* Kopf */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); border-bottom: 1px solid var(--rule); }
+.top-in { max-width: 720px; margin: 0 auto; display: flex; align-items: center; gap: 12px; padding-block: 12px; }
+.brand { display: flex; flex-direction: column; line-height: 1.15; min-width: 0; }
+.brand small { font-family: var(--f-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.brand b { font-family: var(--f-display); font-weight: 600; font-size: 20px; }
+.nav { margin-left: auto; display: flex; gap: 4px; background: var(--surface-2); padding: 3px; border-radius: 999px; }
+.nav button { border: 0; background: transparent; padding: 6px 12px; border-radius: 999px; font-size: 14px; font-weight: 600; color: var(--muted); }
+.nav button[aria-current="true"] { background: var(--surface); color: var(--ink); box-shadow: 0 1px 2px rgba(0,0,0,.08); }
+
+h1, h2, h3 { font-family: var(--f-display); font-weight: 600; text-wrap: balance; margin: 0; }
+.eyebrow { font-family: var(--f-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.view { display: flex; flex-direction: column; gap: 24px; padding-top: 24px; }
+
+/* Start */
+.hero h1 { font-size: clamp(28px, 6vw, 40px); line-height: 1.1; letter-spacing: -.01em; }
+.hero p { margin: 8px 0 0; color: var(--muted); max-width: 58ch; }
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--rule-strong); border-bottom: 1px solid var(--rule); }
+.stat { padding: 14px 4px 12px; display: flex; flex-direction: column; gap: 2px; }
+.stat + .stat { border-left: 1px solid var(--rule); padding-left: 14px; }
+.stat b { font-family: var(--f-display); font-size: 28px; font-weight: 600; font-variant-numeric: tabular-nums; line-height: 1; }
+.stat span { font-size: 13px; color: var(--muted); }
+.stat.due b { color: var(--accent); }
+.meter { height: 6px; border-radius: 3px; background: var(--surface-2); overflow: hidden; display: flex; }
+.meter i { display: block; height: 100%; }
+.meter-legend { display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: 12px; color: var(--muted); margin-top: 6px; }
+.meter-legend span::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 2px; margin-right: 6px; background: var(--c); }
+
+.setup { display: flex; flex-direction: column; gap: 18px; }
+.field { display: flex; flex-direction: column; gap: 8px; }
+.field > label, .field > .label { font-weight: 600; font-size: 14px; }
+.seg { display: inline-flex; flex-wrap: wrap; gap: 6px; }
+.seg button, .chip {
+  border: 1px solid var(--rule-strong); background: transparent; padding: 7px 14px; border-radius: 999px; font-size: 14px; font-weight: 500;
+}
+.seg button[aria-pressed="true"], .chip[aria-pressed="true"] { background: var(--ink); color: var(--on-ink); border-color: var(--ink); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { display: inline-flex; align-items: center; gap: 8px; }
+.chip::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--c, var(--muted)); }
+.chip[data-all]::before { display: none; }
+.chip em { font-style: normal; font-family: var(--f-mono); font-size: 12px; opacity: .7; }
+.hint { font-size: 13px; color: var(--muted); margin: 0; }
+.actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.btn { border: 1px solid var(--rule-strong); background: var(--surface); padding: 12px 20px; border-radius: 12px; font-weight: 600; font-size: 15px; }
+.btn.primary { background: var(--ink); color: var(--on-ink); border-color: var(--ink); padding: 14px 26px; font-size: 16px; }
+.btn:disabled { opacity: .45; cursor: not-allowed; }
+.btn.ghost { background: transparent; border-color: transparent; color: var(--muted); padding-inline: 8px; }
+
+/* Lernkarte */
+.session-head { display: flex; align-items: center; gap: 12px; }
+.session-head .progress { flex: 1; height: 4px; background: var(--surface-2); border-radius: 2px; overflow: hidden; }
+.session-head .progress i { display: block; height: 100%; background: var(--accent); transition: width .3s ease; }
+.session-head .count { font-family: var(--f-mono); font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.card { background: var(--surface); border: 1px solid var(--rule); border-radius: 18px; box-shadow: var(--shadow); padding: 28px clamp(20px, 5vw, 36px); display: flex; flex-direction: column; gap: 18px; min-height: 280px; }
+.card-meta { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.tag { font-family: var(--f-mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; padding: 3px 8px; border-radius: 6px; border: 1px solid currentColor; color: var(--c, var(--muted)); }
+.tag.state { margin-left: auto; border: 0; padding: 0; color: var(--muted); }
+.front { font-family: var(--f-display); font-weight: 600; font-size: clamp(22px, 4.6vw, 30px); line-height: 1.25; text-wrap: balance; }
+.front.term { font-size: clamp(26px, 6vw, 38px); }
+.answer { border-top: 1px dashed var(--rule-strong); padding-top: 18px; display: flex; flex-direction: column; gap: 12px; }
+.answer .term-line { font-family: var(--f-display); font-size: 18px; font-weight: 600; color: var(--accent); }
+.answer .short { font-size: 18px; line-height: 1.55; margin: 0; max-width: 62ch; }
+.explain-toggle { align-self: flex-start; border: 0; background: var(--accent-soft); color: var(--ink); padding: 8px 14px; border-radius: 999px; font-weight: 600; font-size: 14px; }
+.long { background: var(--surface-2); border-radius: 12px; padding: 16px 18px; display: flex; flex-direction: column; gap: 12px; }
+.long p { margin: 0; max-width: 64ch; }
+.long .sub { font-family: var(--f-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.long ul { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 4px; }
+.long a { color: var(--ink); text-decoration-color: var(--accent); text-underline-offset: 3px; }
+.related { display: flex; flex-wrap: wrap; gap: 6px; }
+.related button { border: 1px solid var(--rule-strong); background: var(--surface); border-radius: 999px; padding: 4px 10px; font-size: 13px; }
+.reveal { width: 100%; }
+.rate { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.rate button { border: 1px solid var(--rule-strong); background: var(--surface); border-radius: 12px; padding: 10px 6px; display: flex; flex-direction: column; align-items: center; gap: 2px; font-weight: 700; color: var(--c); }
+.rate button small { font-family: var(--f-mono); font-weight: 400; font-size: 11px; color: var(--muted); }
+.rate button:hover { background: var(--surface-2); }
+.keys { font-size: 12px; color: var(--muted); text-align: center; }
+.keys kbd { font-family: var(--f-mono); font-size: 11px; border: 1px solid var(--rule-strong); border-bottom-width: 2px; border-radius: 4px; padding: 0 5px; }
+
+/* Abschluss */
+.done { text-align: left; display: flex; flex-direction: column; gap: 14px; }
+.done h2 { font-size: 30px; }
+
+/* Stöbern */
+.search { width: 100%; padding: 12px 14px; border: 1px solid var(--rule-strong); border-radius: 12px; background: var(--surface); }
+.list { display: flex; flex-direction: column; border-top: 1px solid var(--rule-strong); }
+.row { border-bottom: 1px solid var(--rule); }
+.row > button { width: 100%; text-align: left; background: transparent; border: 0; padding: 14px 2px; display: grid; grid-template-columns: 10px 1fr auto; gap: 12px; align-items: baseline; }
+.row .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--c); transform: translateY(-1px); }
+.row .t { font-weight: 600; min-width: 0; }
+.row .q { display: block; font-weight: 400; color: var(--muted); font-size: 14px; }
+.row .st { font-family: var(--f-mono); font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; white-space: nowrap; }
+.row .st[data-s="sicher"] { color: var(--easy); }
+.row .st[data-s="lernend"] { color: var(--accent); }
+.row .body { padding: 0 2px 18px 22px; display: flex; flex-direction: column; gap: 10px; }
+.row .body .short { margin: 0; font-weight: 500; }
+.row .body .longtxt { margin: 0; color: var(--ink-2); font-size: 15px; }
+.empty { color: var(--muted); padding: 24px 0; }
+
+/* Einstellungen */
+.settings { display: flex; flex-direction: column; gap: 18px; }
+.settings section { display: flex; flex-direction: column; gap: 10px; padding-bottom: 18px; border-bottom: 1px solid var(--rule); }
+.settings h2 { font-size: 20px; }
+textarea { width: 100%; min-height: 110px; padding: 10px; border: 1px solid var(--rule-strong); border-radius: 10px; background: var(--surface); font-family: var(--f-mono); font-size: 12px; }
+.confirm { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; background: var(--surface-2); padding: 12px; border-radius: 10px; }
+.toast { position: fixed; left: 50%; bottom: calc(20px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); background: var(--ink); color: var(--on-ink); padding: 10px 16px; border-radius: 10px; font-size: 14px; z-index: 20; }
+footer { max-width: 720px; margin: 40px auto 0; font-size: 12px; color: var(--muted); }
+footer a { color: inherit; }
+
+@media (max-width: 520px) {
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  .stat:nth-child(3) { border-left: 0; padding-left: 4px; }
+  .stat:nth-child(n+3) { border-top: 1px solid var(--rule); }
+  .nav button { padding: 6px 10px; font-size: 13px; }
+  .brand b { font-size: 17px; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+
+<header class="top"><div class="top-in">
+  <div class="brand"><small>pocketlearn · Lernkarten</small><b id="deckTitle">EU AI Act</b></div>
+  <nav class="nav" aria-label="Bereiche">
+    <button id="navHome" data-view="home" aria-current="true">Lernen</button>
+    <button id="navBrowse" data-view="browse">Alle Karten</button>
+    <button id="navSettings" data-view="settings">Fortschritt</button>
+  </nav>
+</div></header>
+
+<main class="wrap" id="app"></main>
+<footer id="foot"></footer>
+<div class="toast" id="toast" hidden></div>
+
+<!--DECK-->
+<script>
+(function () {
+  "use strict";
+  const D = window.DECK;
+  const CARDS = D.cards;
+  const BY_ID = Object.fromEntries(CARDS.map(c => [c.id, c]));
+  const KEY = "pocketlearn-karten:" + D.meta.id;
+  const DAY = 86400000;
+
+  // ---------- Speicher ----------
+  function load() {
+    try { const raw = localStorage.getItem(KEY); if (raw) return JSON.parse(raw); } catch (e) {}
+    return { cards: {}, settings: { mode: "frage", cat: "all", newPerSession: 10 } };
+  }
+  let S = load();
+  S.cards = S.cards || {}; S.settings = Object.assign({ mode: "frage", cat: "all", newPerSession: 10 }, S.settings || {});
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
+
+  // ---------- Wiederholungsplan (vereinfachtes SM-2) ----------
+  function stateOf(id) { return S.cards[id] || null; }
+  function status(id) {
+    const s = stateOf(id); if (!s) return "neu";
+    return s.ivl >= 21 ? "sicher" : "lernend";
+  }
+  function isDue(id, now) { const s = stateOf(id); return s && s.due <= now; }
+  function preview(id, grade) {
+    const s = stateOf(id) || { ivl: 0, ease: 2.5, reps: 0, lapses: 0 };
+    let ivl = s.ivl, ease = s.ease;
+    if (grade === 0) return { ivl: 0, ease: Math.max(1.3, ease - .2) };
+    if (s.reps === 0 || ivl === 0) ivl = grade === 1 ? 1 : grade === 2 ? 2 : 4;
+    else if (grade === 1) { ivl = Math.max(1, Math.round(ivl * 1.2)); ease = Math.max(1.3, ease - .15); }
+    else if (grade === 2) ivl = Math.round(ivl * ease);
+    else { ivl = Math.round(ivl * ease * 1.3); ease = ease + .15; }
+    return { ivl: Math.min(ivl, 365), ease };
+  }
+  function grade(id, g) {
+    const s = stateOf(id) || { ivl: 0, ease: 2.5, reps: 0, lapses: 0 };
+    const p = preview(id, g);
+    s.ivl = p.ivl; s.ease = p.ease; s.reps += 1; if (g === 0) s.lapses += 1;
+    s.due = g === 0 ? Date.now() : Date.now() + p.ivl * DAY;
+    s.last = Date.now();
+    S.cards[id] = s; save();
+  }
+  function fmtIvl(d) {
+    if (d === 0) return "gleich";
+    if (d === 1) return "1 Tag";
+    if (d < 30) return d + " Tage";
+    if (d < 365) return Math.round(d / 30) + " Mon.";
+    return "1 Jahr";
+  }
+
+  // ---------- Hilfen ----------
+  const $ = s => document.querySelector(s);
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const catName = c => D.meta.categories[c] || c;
+  const CAT_KEYS = Object.keys(D.meta.categories);
+  const catVar = c => `--c: var(--cat-${c}, var(--k${Math.max(0, CAT_KEYS.indexOf(c)) % 9}))`;
+  function pool() { return S.settings.cat === "all" ? CARDS : CARDS.filter(c => c.cat === S.settings.cat); }
+  function toast(msg) { const t = $("#toast"); t.textContent = msg; t.hidden = false; clearTimeout(toast.t); toast.t = setTimeout(() => t.hidden = true, 2200); }
+  function setNav(v) { document.querySelectorAll(".nav button").forEach(b => b.setAttribute("aria-current", b.dataset.view === v ? "true" : "false")); }
+
+  // ---------- Ansicht: Start ----------
+  function renderHome() {
+    setNav("home");
+    const now = Date.now(), P = pool();
+    const due = P.filter(c => isDue(c.id, now)).length;
+    const neu = P.filter(c => !stateOf(c.id)).length;
+    const lern = P.filter(c => status(c.id) === "lernend").length;
+    const sicher = P.filter(c => status(c.id) === "sicher").length;
+    const tot = P.length || 1;
+    const catCounts = CARDS.reduce((a, c) => (a[c.cat] = (a[c.cat] || 0) + 1, a), {});
+    const willStudy = due + Math.min(neu, S.settings.newPerSession);
+    $("#app").innerHTML = `
+      <section class="view">
+        <div class="hero">
+          <span class="eyebrow">${esc(D.meta.subtitle)}</span>
+          <h1>${esc(D.meta.title)}</h1>
+          <p>${esc(D.meta.intro)}</p>
+        </div>
+        <div>
+          <div class="stats">
+            <div class="stat due"><b>${due}</b><span>heute fällig</span></div>
+            <div class="stat"><b>${neu}</b><span>neu</span></div>
+            <div class="stat"><b>${lern}</b><span>in Arbeit</span></div>
+            <div class="stat"><b>${sicher}</b><span>sicher</span></div>
+          </div>
+          <div style="margin-top:14px">
+            <div class="meter" role="img" aria-label="${sicher} sicher, ${lern} in Arbeit, ${neu} neu von ${P.length}">
+              <i style="width:${sicher / tot * 100}%;background:var(--easy)"></i>
+              <i style="width:${lern / tot * 100}%;background:var(--accent)"></i>
+            </div>
+            <div class="meter-legend"><span style="--c:var(--easy)">sicher (≥ 21 Tage)</span><span style="--c:var(--accent)">in Arbeit</span><span style="--c:var(--surface-2)">neu</span></div>
+          </div>
+        </div>
+        <div class="setup">
+          <div class="field">
+            <span class="label">Vorderseite</span>
+            <div class="seg" role="group" aria-label="Vorderseite">
+              <button id="modeFrage" data-mode="frage" aria-pressed="${S.settings.mode === "frage"}">Frage</button>
+              <button id="modeBegriff" data-mode="begriff" aria-pressed="${S.settings.mode === "begriff"}">Begriff</button>
+            </div>
+            <p class="hint">${S.settings.mode === "frage" ? "Du siehst eine Frage und antwortest frei." : "Du siehst nur den Fachbegriff und erklärst ihn."}</p>
+          </div>
+          <div class="field">
+            <span class="label">Themenbereich</span>
+            <div class="chips">
+              <button class="chip" data-all data-cat="all" aria-pressed="${S.settings.cat === "all"}">Alle <em>${CARDS.length}</em></button>
+              ${Object.keys(D.meta.categories).filter(k => catCounts[k]).map(k => `<button class="chip" style="${catVar(k)}" data-cat="${k}" aria-pressed="${S.settings.cat === k}">${esc(catName(k))} <em>${catCounts[k]}</em></button>`).join("")}
+            </div>
+          </div>
+          <div class="field">
+            <span class="label">Neue Karten pro Runde</span>
+            <div class="seg" role="group" aria-label="Neue Karten pro Runde">
+              ${[5, 10, 20, 50].map(n => `<button data-new="${n}" aria-pressed="${S.settings.newPerSession === n}">${n}</button>`).join("")}
+            </div>
+          </div>
+          <div class="actions">
+            <button class="btn primary" id="startBtn" ${willStudy ? "" : "disabled"}>${willStudy ? `Runde starten · ${willStudy} Karten` : "Für heute alles erledigt"}</button>
+            <button class="btn" id="cramBtn">Freies Üben (zufällig 20)</button>
+          </div>
+          <p class="hint">Fällige Karten kommen zuerst, danach neue. „Freies Üben“ verändert den Plan nicht.</p>
+        </div>
+      </section>`;
+    document.querySelectorAll("[data-mode]").forEach(b => b.onclick = () => { S.settings.mode = b.dataset.mode; save(); renderHome(); });
+    document.querySelectorAll("[data-cat]").forEach(b => b.onclick = () => { S.settings.cat = b.dataset.cat; save(); renderHome(); });
+    document.querySelectorAll("[data-new]").forEach(b => b.onclick = () => { S.settings.newPerSession = +b.dataset.new; save(); renderHome(); });
+    $("#startBtn").onclick = () => startSession(false);
+    $("#cramBtn").onclick = () => startSession(true);
+  }
+
+  // ---------- Lernrunde ----------
+  let Q = null;
+  function shuffle(a) { for (let i = a.length - 1; i > 0; i--) { const j = Math.random() * (i + 1) | 0; [a[i], a[j]] = [a[j], a[i]]; } return a; }
+  function startSession(cram) {
+    const now = Date.now(), P = pool();
+    let ids;
+    if (cram) ids = shuffle(P.map(c => c.id)).slice(0, 20);
+    else {
+      const due = P.filter(c => isDue(c.id, now)).sort((a, b) => S.cards[a.id].due - S.cards[b.id].due).map(c => c.id);
+      const neu = P.filter(c => !stateOf(c.id)).map(c => c.id).slice(0, S.settings.newPerSession);
+      ids = due.concat(shuffle(neu));
+    }
+    if (!ids.length) return;
+    Q = { ids, i: 0, total: ids.length, cram, revealed: false, explained: false, again: 0, done: 0 };
+    renderCard();
+  }
+  function renderCard() {
+    setNav("home");
+    if (Q.i >= Q.ids.length) return renderDone();
+    const c = BY_ID[Q.ids[Q.i]], mode = S.settings.mode, st = status(c.id);
+    const risk = c.risk ? `<span class="tag" style="--c:var(--risk-${c.risk})">${esc(D.meta.risks[c.risk] || c.risk)}</span>` : "";
+    const front = mode === "frage" ? `<div class="front">${esc(c.q)}</div>` : `<div class="front term">${esc(c.term)}</div>`;
+    const pct = Math.round(Q.done / Q.total * 100);
+    let ans = "";
+    if (Q.revealed) {
+      const links = (c.links || []).length ? `<span class="sub">Quellen</span><ul>${c.links.map(l => `<li><a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)}</a></li>`).join("")}</ul>` : "";
+      const rel = (c.related || []).filter(r => BY_ID[r]);
+      const relHtml = rel.length ? `<span class="sub">Verwandte Begriffe</span><div class="related">${rel.map(r => `<button data-peek="${r}">${esc(BY_ID[r].term)}</button>`).join("")}</div>` : "";
+      ans = `<div class="answer">
+        ${mode === "frage" ? `<div class="term-line">${esc(c.term)}</div>` : ""}
+        <p class="short">${esc(c.short)}</p>
+        <button class="explain-toggle" id="explainBtn" aria-expanded="${Q.explained}">${Q.explained ? "Erklärung ausblenden" : "Erklärung anzeigen"}</button>
+        ${Q.explained ? `<div class="long"><span class="sub">Erklärung</span><p>${esc(c.long)}</p>${relHtml}${links}${c.src ? `<span class="sub">${esc(D.meta.srcLabel || "Quelle")}: ${esc(c.src)}</span>` : ""}</div>` : ""}
+      </div>`;
+    }
+    const grades = [["Nochmal", "--again"], ["Schwer", "--hard"], ["Gut", "--good"], ["Leicht", "--easy"]];
+    $("#app").innerHTML = `
+      <section class="view">
+        <div class="session-head">
+          <button class="btn ghost" id="quitBtn" aria-label="Runde beenden">✕ Beenden</button>
+          <div class="progress" aria-hidden="true"><i style="width:${pct}%"></i></div>
+          <span class="count">${Q.done} / ${Q.total}</span>
+        </div>
+        <article class="card" aria-live="polite">
+          <div class="card-meta">
+            <span class="tag" style="${catVar(c.cat)}">${esc(catName(c.cat))}</span>${risk}
+            <span class="tag state">${Q.cram ? "freies Üben" : st}</span>
+          </div>
+          ${front}
+          ${ans}
+        </article>
+        ${Q.revealed
+          ? `<div class="rate">${grades.map(([l, v], g) => `<button data-grade="${g}" style="--c:var(${v})">${l}<small>${Q.cram ? "&nbsp;" : fmtIvl(preview(c.id, g).ivl)}</small></button>`).join("")}</div>`
+          : `<button class="btn primary reveal" id="revealBtn">Antwort zeigen</button>`}
+        <p class="keys"><kbd>Leertaste</kbd> Antwort · <kbd>E</kbd> Erklärung · <kbd>1</kbd>–<kbd>4</kbd> bewerten</p>
+      </section>`;
+    $("#quitBtn").onclick = () => { Q = null; renderHome(); };
+    if ($("#revealBtn")) { $("#revealBtn").onclick = reveal; $("#revealBtn").focus({ preventScroll: true }); }
+    if ($("#explainBtn")) $("#explainBtn").onclick = toggleExplain;
+    document.querySelectorAll("[data-grade]").forEach(b => b.onclick = () => rate(+b.dataset.grade));
+    document.querySelectorAll("[data-peek]").forEach(b => b.onclick = () => { const r = BY_ID[b.dataset.peek]; toast(r.term + ": " + r.short.slice(0, 140) + (r.short.length > 140 ? " …" : "")); });
+  }
+  function reveal() { if (!Q || Q.revealed) return; Q.revealed = true; renderCard(); }
+  function toggleExplain() { if (!Q || !Q.revealed) return; Q.explained = !Q.explained; renderCard(); }
+  function rate(g) {
+    if (!Q || !Q.revealed) return;
+    const id = Q.ids[Q.i];
+    if (!Q.cram) grade(id, g);
+    if (g === 0) { Q.ids.push(id); Q.again++; } else Q.done++;
+    Q.i++; Q.revealed = false; Q.explained = false;
+    renderCard();
+  }
+  function renderDone() {
+    const now = Date.now();
+    const next = CARDS.map(c => stateOf(c.id)).filter(s => s && s.due > now).sort((a, b) => a.due - b.due)[0];
+    const when = next ? new Date(next.due).toLocaleDateString("de-DE", { weekday: "long", day: "numeric", month: "long" }) : null;
+    $("#app").innerHTML = `
+      <section class="view done">
+        <span class="eyebrow">Runde abgeschlossen</span>
+        <h2>${Q.total} Karten geschafft.</h2>
+        <p>${Q.again ? `${Q.again}× „Nochmal“ – diese Karten kamen in derselben Runde erneut.` : "Keine Karte musste wiederholt werden."}
+        ${!Q.cram && when ? ` Die nächste Wiederholung ist am ${when} fällig.` : ""}</p>
+        <div class="actions"><button class="btn primary" id="homeBtn">Zur Übersicht</button><button class="btn" id="againBtn">Noch eine Runde</button></div>
+      </section>`;
+    $("#homeBtn").onclick = () => { Q = null; renderHome(); };
+    $("#againBtn").onclick = () => startSession(Q.cram);
+  }
+
+  // ---------- Ansicht: Alle Karten ----------
+  let B = { q: "", cat: "all", open: null };
+  function renderBrowse() {
+    setNav("browse"); Q = null;
+    $("#app").innerHTML = `
+      <section class="view">
+        <div class="hero"><span class="eyebrow">${CARDS.length} Karten</span><h1>Alle Karten</h1></div>
+        <input class="search" id="search" type="search" placeholder="Suchen: Begriff, Frage oder Antwort" value="${esc(B.q)}" autocomplete="off">
+        <div class="chips" id="bcats">
+          <button class="chip" data-all data-bcat="all" aria-pressed="${B.cat === "all"}">Alle</button>
+          ${Object.keys(D.meta.categories).map(k => `<button class="chip" style="${catVar(k)}" data-bcat="${k}" aria-pressed="${B.cat === k}">${esc(catName(k))}</button>`).join("")}
+        </div>
+        <div class="list" id="list"></div>
+      </section>`;
+    const s = $("#search");
+    s.oninput = () => { B.q = s.value; drawList(); };
+    document.querySelectorAll("[data-bcat]").forEach(b => b.onclick = () => { B.cat = b.dataset.bcat; renderBrowse(); });
+    drawList();
+  }
+  function norm(t) { return t.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, ""); }
+  function drawList() {
+    const q = norm(B.q.trim());
+    const rows = CARDS.filter(c => (B.cat === "all" || c.cat === B.cat) && (!q || norm(c.term + " " + c.q + " " + c.short + " " + c.long).includes(q)));
+    $("#list").innerHTML = rows.length ? rows.map(c => {
+      const st = status(c.id), open = B.open === c.id;
+      return `<div class="row"><button data-open="${c.id}" aria-expanded="${open}" style="${catVar(c.cat)}">
+          <span class="dot"></span><span class="t">${esc(c.term)}<span class="q">${esc(c.q)}</span></span><span class="st" data-s="${st}">${st}</span>
+        </button>${open ? `<div class="body"><p class="short">${esc(c.short)}</p><p class="longtxt">${esc(c.long)}</p>${c.src ? `<p class="hint">${esc(D.meta.srcLabel || "Quelle")}: ${esc(c.src)}</p>` : ""}</div>` : ""}</div>`;
+    }).join("") : `<p class="empty">Keine Karte passt zu „${esc(B.q)}“.</p>`;
+    document.querySelectorAll("[data-open]").forEach(b => b.onclick = () => { B.open = B.open === b.dataset.open ? null : b.dataset.open; drawList(); });
+  }
+
+  // ---------- Ansicht: Fortschritt ----------
+  function renderSettings(confirmReset) {
+    setNav("settings"); Q = null;
+    const learned = Object.keys(S.cards).length;
+    $("#app").innerHTML = `
+      <section class="view settings">
+        <div class="hero"><span class="eyebrow">Fortschritt</span><h1>Dein Lernstand</h1>
+          <p>Der Lernstand wird nur in diesem Browser gespeichert. Für ein anderes Gerät kopierst du ihn hier heraus und fügst ihn dort ein.</p></div>
+        <section>
+          <h2>Sichern</h2>
+          <p class="hint">${learned} von ${CARDS.length} Karten haben einen Lernstand.</p>
+          <textarea id="exportBox" readonly aria-label="Lernstand als Text">${esc(JSON.stringify({ deck: D.meta.id, v: 1, cards: S.cards }))}</textarea>
+          <div class="actions"><button class="btn" id="copyBtn">Lernstand kopieren</button></div>
+        </section>
+        <section>
+          <h2>Übertragen</h2>
+          <textarea id="importBox" placeholder="Kopierten Lernstand hier einfügen" aria-label="Lernstand einfügen"></textarea>
+          <div class="actions"><button class="btn" id="importBtn">Lernstand übernehmen</button></div>
+        </section>
+        <section>
+          <h2>Zurücksetzen</h2>
+          ${confirmReset
+            ? `<div class="confirm"><span>Wirklich den gesamten Lernstand löschen?</span><button class="btn" id="resetYes" style="color:var(--again)">Ja, löschen</button><button class="btn ghost" id="resetNo">Abbrechen</button></div>`
+            : `<div class="actions"><button class="btn" id="resetBtn">Lernstand löschen</button></div>`}
+        </section>
+      </section>`;
+    $("#copyBtn").onclick = () => {
+      const box = $("#exportBox");
+      const fallback = () => { box.focus(); box.select(); toast("Text markiert – mit Strg+C kopieren"); };
+      try { navigator.clipboard.writeText(box.value).then(() => toast("Lernstand kopiert"), fallback); } catch (e) { fallback(); }
+    };
+    $("#importBtn").onclick = () => {
+      try {
+        const o = JSON.parse($("#importBox").value);
+        if (o.deck !== D.meta.id || !o.cards) throw new Error();
+        S.cards = o.cards; save(); toast("Lernstand übernommen"); renderSettings();
+      } catch (e) { toast("Der Text ist kein Lernstand für dieses Kartenset."); }
+    };
+    if ($("#resetBtn")) $("#resetBtn").onclick = () => renderSettings(true);
+    if ($("#resetYes")) $("#resetYes").onclick = () => { S.cards = {}; save(); toast("Lernstand gelöscht"); renderSettings(); };
+    if ($("#resetNo")) $("#resetNo").onclick = () => renderSettings();
+  }
+
+  // ---------- Steuerung ----------
+  document.querySelectorAll(".nav button").forEach(b => b.onclick = () => {
+    const v = b.dataset.view; if (v === "home") { Q = null; renderHome(); } else if (v === "browse") renderBrowse(); else renderSettings();
+    window.scrollTo(0, 0);
+  });
+  document.addEventListener("keydown", e => {
+    if (!Q || e.target.matches("input, textarea")) return;
+    if ((e.key === " " || e.key === "Enter") && !Q.revealed) { e.preventDefault(); reveal(); }
+    else if ((e.key === "e" || e.key === "E") && Q.revealed) toggleExplain();
+    else if (["1", "2", "3", "4"].includes(e.key) && Q.revealed) rate(+e.key - 1);
+  });
+  $("#deckTitle").textContent = D.meta.title;
+  $("#foot").innerHTML = (D.meta.source ? `Inhalte: <a href="${esc(D.meta.source)}" target="_blank" rel="noopener">${esc(D.meta.sourceLabel)}</a>` : esc(D.meta.sourceLabel)) + ` · ${esc(D.meta.publisher)}`;
+  renderHome();
+})();
+</script>
+<!--FOOTEXTRA-->
