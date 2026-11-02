@@ -242,6 +242,17 @@ footer a { color: inherit; }
   .nav { flex-wrap: wrap; border-radius: 16px; }
   .nav button { flex: 1 1 30%; }
 }
+.wel { display: flex; flex-direction: column; gap: 22px; padding-top: 28px; max-width: 560px; margin: 0 auto; }
+.wel .logo { width: 84px; height: 84px; border-radius: 20px; box-shadow: var(--shadow); display: block; }
+.wel h1 { font-size: clamp(28px, 7vw, 38px); line-height: 1.1; margin-top: 14px; }
+.wel .lead { color: var(--muted); margin: 8px 0 0; font-size: 16px; }
+.wel .how { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.wel .how div { background: var(--surface); border: 1px solid var(--rule); border-radius: 14px; padding: 12px 10px; font-size: 14px; line-height: 1.35; }
+.wel .how b { display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: var(--ink); color: var(--on-ink); font-family: var(--f-mono); font-size: 13px; margin-bottom: 8px; }
+.wel ul.rl { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 6px; }
+.wel .btn.primary { width: 100%; font-size: 17px; padding: 16px; }
+.wel .more { background: transparent; border: 0; color: var(--muted); text-decoration: underline; font-size: 15px; padding: 6px; align-self: center; }
+@media (max-width: 400px) { .wel .how { grid-template-columns: 1fr; } }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
 </style>
 
@@ -681,6 +692,53 @@ footer a { color: inherit; }
     if ($("#planSet")) $("#planSet").onclick = () => { S.settings.newPerSession = P.set; if (HAS_SRC) S.settings.order = "wichtig"; S.settings.cat = "all"; save(); toast(P.set + " neue Karten pro Runde eingestellt"); renderHome(); window.scrollTo(0, 0); };
   }
 
+  // ---------- Willkommen (nur beim ersten Öffnen) ----------
+  const WELCOME_KEY = "pocketlearn-karten:willkommen";
+  function welcomeSeen() { try { return !!localStorage.getItem(WELCOME_KEY); } catch (e) { return true; } }
+  function setWelcomeSeen() { try { localStorage.setItem(WELCOME_KEY, "1"); } catch (e) {} }
+  function showChrome(on) { const n = document.querySelector(".nav"); if (n) n.hidden = !on; famVisible(on); }
+  function renderWelcome() {
+    showChrome(false); Q = null;
+    const dStr = examDate(), P = planFor(dStr);
+    const fam = Array.isArray(D.meta.family) && D.meta.family.length > 1 ? D.meta.family : null;
+    $("#app").innerHTML = `
+      <section class="wel">
+        <div>
+          <img class="logo" src="icon-192.png" alt="" width="84" height="84">
+          <h1>Willkommen bei deinen Lernkarten</h1>
+          <p class="lead">${esc((D.meta.subtitle || "").split(" · ")[0])}${fam ? ", Prüfungsbereich" : ""} <b>${esc(D.meta.title)}</b>: ${CARDS.length} Karten${HAS_SRC ? ", ausgewertet aus den echten IHK-Prüfungen" : ""}.${fam ? ` Den Bereich ${fam.filter(x => !x.current).map(x => esc(x.label)).join(", ")} erreichst du später oben über den Umschalter.` : ""} Lies dir das einmal kurz durch, bevor du loslegst.</p>
+        </div>
+        <section>
+          <h2 style="font-size:20px;margin-bottom:10px">So funktioniert's</h2>
+          <div class="how">
+            <div><b>1</b>Frage lesen und <strong>im Kopf antworten</strong></div>
+            <div><b>2</b>„Antwort zeigen“ und <strong>vergleichen</strong></div>
+            <div><b>3</b><strong>Ehrlich bewerten</strong> – die App plant die Wiederholung</div>
+          </div>
+        </section>
+        <section>
+          <h2 style="font-size:20px;margin-bottom:10px">Die 3 Grundregeln</h2>
+          <ul class="rl">
+            <li><b>Jeden Tag eine Runde</b> – 15 bis 20 Minuten reichen.</li>
+            <li><b>Zuerst die fälligen Karten</b> – „Runde starten“ macht das automatisch.</li>
+            <li><b>Ehrlich bewerten</b> – nur so kommt jede Karte zur richtigen Zeit wieder.</li>
+          </ul>
+        </section>
+        <section class="plan">
+          <div class="field"><label for="welExam">Wann ist deine Prüfung? <span style="font-weight:400;color:var(--muted)">(freiwillig)</span></label>
+            <input type="date" id="welExam" value="${esc(dStr)}"></div>
+          ${P ? `<div class="res${P.warn ? " warn" : ""}">${P.set ? `<span class="big">${P.set} neue Karten pro Tag</span>` : ""}${P.msg}</div>`
+            : `<p class="hint">Mit dem Datum rechnet die App aus, wie viele neue Karten du pro Tag brauchst, und stellt das gleich ein.</p>`}
+        </section>
+        <button class="btn primary" id="welGo">Los geht's</button>
+        <button class="more" id="welMore">Mehr zur Lernstrategie</button>
+      </section>`;
+    $("#welExam").onchange = e => { try { if (e.target.value) localStorage.setItem(EXAM_KEY, e.target.value); else localStorage.removeItem(EXAM_KEY); } catch (er) {} renderWelcome(); };
+    const apply = () => { setWelcomeSeen(); if (P && P.set) { S.settings.newPerSession = P.set; if (HAS_SRC) S.settings.order = "wichtig"; save(); } showChrome(true); };
+    $("#welGo").onclick = () => { apply(); renderHome(); window.scrollTo(0, 0); if (P && P.set) toast(P.set + " neue Karten pro Runde eingestellt"); };
+    $("#welMore").onclick = () => { apply(); renderGuide(); window.scrollTo(0, 0); };
+  }
+
   function renderSettings(confirmReset) {
     famVisible(true);
     setNav("settings"); Q = null;
@@ -699,6 +757,11 @@ footer a { color: inherit; }
           <h2>Übertragen</h2>
           <textarea id="importBox" placeholder="Kopierten Lernstand hier einfügen" aria-label="Lernstand einfügen"></textarea>
           <div class="actions"><button class="btn" id="importBtn">Lernstand übernehmen</button></div>
+        </section>
+        <section>
+          <h2>Einführung</h2>
+          <p class="hint">Die Willkommensseite mit den Grundregeln noch einmal ansehen.</p>
+          <div class="actions"><button class="btn" id="welAgain">Einführung noch einmal zeigen</button></div>
         </section>
         <section>
           <h2>Zurücksetzen</h2>
@@ -722,6 +785,7 @@ footer a { color: inherit; }
     if ($("#resetBtn")) $("#resetBtn").onclick = () => renderSettings(true);
     if ($("#resetYes")) $("#resetYes").onclick = () => { S.cards = {}; save(); toast("Lernstand gelöscht"); renderSettings(); };
     if ($("#resetNo")) $("#resetNo").onclick = () => renderSettings();
+    $("#welAgain").onclick = () => { renderWelcome(); window.scrollTo(0, 0); };
   }
 
   // ---------- Steuerung ----------
@@ -742,7 +806,7 @@ footer a { color: inherit; }
     f.innerHTML = '<span class="lbl">Prüfungsbereich</span>' + D.meta.family.map(x => `<a href="${esc(x.href)}"${x.current ? ' aria-current="page"' : ""}>${esc(x.label)}</a>`).join("");
   }
   $("#foot").innerHTML = (D.meta.source ? `Inhalte: <a href="${esc(D.meta.source)}" target="_blank" rel="noopener">${esc(D.meta.sourceLabel)}</a>` : esc(D.meta.sourceLabel)) + ` · ${esc(D.meta.publisher)}`;
-  renderHome();
+  if (welcomeSeen()) renderHome(); else renderWelcome();
 })();
 </script>
 <!--FOOTEXTRA-->
