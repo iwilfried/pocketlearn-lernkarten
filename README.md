@@ -8,7 +8,6 @@ Offline-fähige Lernkarten-App (PWA) von Learning Factory. Jede Karte hat **Frag
 |---|---|---|---|
 | **E-Commerce Prüfung – Geschäftsprozesse** (164 Karten) | https://karten.pocketlearn.online/ | Hauptordner (Kopie in `ec-gp/`) | `tools/ec-gp/build_ec.py` |
 | **E-Commerce Prüfung – Kundenkommunikation** (119 Karten) | https://karten.pocketlearn.online/kk/ | `kk/` | `tools/kk/build_kk.py` |
-| **EU AI Act** (380 Begriffe) | https://karten.pocketlearn.online/eu-ai-act/ | `eu-ai-act/` | `tools/build.js` |
 
 Die beiden E-Commerce-Sets sind über den Umschalter „Prüfungsbereich“ verbunden (`meta.family` in `deck.js`); jedes Set hat einen eigenen Lernstand.
 Ausgewertet wurden jeweils die IHK-Prüfungen Sommer 2020 bis Winter 2025; alle Texte sind eigene Formulierungen, Rechenaufgaben haben eigene Zahlen.
@@ -50,6 +49,10 @@ window.DECK = {
 ```
 
 Die `meta.id` trennt den Lernstand verschiedener Kartensets im Browser.
+
+## EU AI Act (nicht mehr veröffentlicht)
+
+Das frühere Kartenset EU AI Act (380 Begriffe) ist nicht mehr auf der Seite. Die Bauskripte unten (`tools/build.js`, `source/`) sind noch vorhanden; der letzte veröffentlichte Stand liegt in der Git-Geschichte (Ordner `eu-ai-act/` vor seiner Entfernung).
 
 ## Neu bauen
 
