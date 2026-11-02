@@ -1,11 +1,17 @@
 # pocketlearn Lernkarten
 
 Offline-fähige Lernkarten-App (PWA) von Learning Factory. Jede Karte hat **Frage**, **Kurzantwort** und **Erklärung**.
-Erstes Kartenset: **EU AI Act** mit 380 Begriffen aus dem [EU AI Act Glossar](https://glossar.pocketlearn.online/).
 
-Live: https://karten.pocketlearn.online/
+## Kartensets und Adressen
 
-Zweites Kartenset: **E-Commerce Prüfung** (Teil 2 der Abschlussprüfung Kaufmann/Kauffrau im E-Commerce, Geschäftsprozesse) mit 164 Karten im Ordner `ec-gp/` – live unter https://karten.pocketlearn.online/ec-gp/. Ausgewertet wurden die IHK-Prüfungen 2020–2025; alle Texte sind eigene Formulierungen, die Rechenaufgaben haben eigene Zahlen. Bauskripte: `tools/ec-gp/`.
+| Kartenset | Adresse | Ordner |
+|---|---|---|
+| **E-Commerce Prüfung** (Teil 2 der Abschlussprüfung Kaufmann/Kauffrau im E-Commerce, Geschäftsprozesse, 164 Karten) | https://karten.pocketlearn.online/ | Hauptordner |
+| dasselbe Set, alte Adresse | https://karten.pocketlearn.online/ec-gp/ | `ec-gp/` |
+| **EU AI Act** (380 Begriffe aus dem [EU AI Act Glossar](https://glossar.pocketlearn.online/)) | https://karten.pocketlearn.online/eu-ai-act/ | `eu-ai-act/` |
+
+E-Commerce: Ausgewertet wurden die IHK-Prüfungen 2020–2025; alle Texte sind eigene Formulierungen, die Rechenaufgaben haben eigene Zahlen. Bauskripte: `tools/ec-gp/`.
+Nach einem Neubau mit `tools/ec-gp/build_ec.py` die erzeugten Dateien in `ec-gp/` **und** in den Hauptordner kopieren.
 
 ## Funktionen
 
