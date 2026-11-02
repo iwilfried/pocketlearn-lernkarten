@@ -1,10 +1,10 @@
-/* pocketlearn Lernkarten · Kartenset: E-Commerce Prüfung (Kundenkommunikation) · 119 Karten
+/* pocketlearn Lernkarten · Kartenset: E-Commerce Prüfung (Kundenkommunikation) · 134 Karten
    Schema: meta{…} · cards[{id,cat,q,term,short,long,src}] */
 window.DECK={
  "meta": {
   "id": "ec-kk",
   "title": "Kundenkommunikation",
-  "subtitle": "E-Commerce Prüfung · 119 Karten",
+  "subtitle": "E-Commerce Prüfung · 134 Karten",
   "intro": "Lernkarten zum Prüfungsbereich Kundenkommunikation im E-Commerce (Teil 2 der Abschlussprüfung Kaufmann/Kauffrau im E-Commerce): Vertragsstörungen, Mahnwesen, Retouren, Beschwerdemanagement, Kommunikationsmodelle und Servicekanäle – ausgewertet aus den Prüfungen 2020 bis 2025, mit Rechenaufgaben. Prüfungsbezug „S24 2.1“ heißt: Sommer 2024, Aufgabe 2.1 (W = Winter).",
   "source": "",
   "sourceLabel": "Ausgewertet: IHK-Abschlussprüfungen 2020–2025, eigene Formulierungen",
@@ -1461,6 +1461,186 @@ window.DECK={
    "links": [],
    "related": [],
    "src": "S25 1.5"
+  },
+  {
+   "id": "kundenbindung-begriff",
+   "cat": "bindung",
+   "risk": null,
+   "q": "Was bedeutet Kundenbindung, und warum ist sie für einen Online-Händler so wichtig?",
+   "term": "Kundenbindung – warum sie sich lohnt",
+   "short": "Kundenbindung heißt: Kunden kaufen immer wieder beim selben Händler und bleiben ihm treu. Sie lohnt sich, weil einen neuen Kunden zu gewinnen meist ein Mehrfaches kostet; Stammkunden kaufen öfter und mehr und empfehlen den Shop weiter.",
+   "long": "Im Online-Handel ist der Wettbewerber nur einen Klick entfernt. Deshalb reichen gute Preise allein nicht – Service, Vertrauen und persönliche Ansprache halten Kunden. Gemessen wird Kundenbindung z. B. mit der Retention-Rate (Kundenbindungsrate) oder der Wiederkaufrate.",
+   "links": [],
+   "related": [],
+   "src": ""
+  },
+  {
+   "id": "zufriedenheit-loyalitaet",
+   "cat": "bindung",
+   "risk": null,
+   "q": "Wie hängen Kundenzufriedenheit und Kundenbindung zusammen?",
+   "term": "Von der Zufriedenheit zur Bindung",
+   "short": "Es ist eine Kette: Kontakt/Kauf → der Kunde vergleicht Erwartung und Erlebnis → zufrieden → er vertraut dem Händler (Loyalität) → er kauft wieder und empfiehlt weiter (Bindung).",
+   "long": "Wichtig: Zufriedenheit allein garantiert keine Bindung – auch zufriedene Kunden wechseln, wenn ein anderes Angebot besser ist. Wer dauerhaft binden will, muss Erwartungen übertreffen (z. B. schneller Versand, kulante Lösung, persönliche Ansprache) und regelmäßig im Kontakt bleiben.",
+   "links": [],
+   "related": [],
+   "src": ""
+  },
+  {
+   "id": "gebundenheit-verbundenheit",
+   "cat": "bindung",
+   "risk": null,
+   "q": "Was ist der Unterschied zwischen Gebundenheit und Verbundenheit des Kunden?",
+   "term": "Gebundenheit und Verbundenheit",
+   "short": "Gebundenheit: Der Kunde bleibt, weil er (noch) muss oder es sich rechnet – z. B. Vertrag, Abo, gesammelte Bonuspunkte, gespeicherte Daten. Verbundenheit: Der Kunde bleibt freiwillig, weil er zufrieden ist und dem Händler vertraut.",
+   "long": "Verbundenheit ist stabiler: Fällt bei reiner Gebundenheit der Grund weg (Vertrag endet), wandert der Kunde ab. Gute Kundenbindung verbindet beides – z. B. ein Bonusprogramm (Gebundenheit) plus sehr guter, persönlicher Service (Verbundenheit).",
+   "links": [],
+   "related": [],
+   "src": ""
+  },
+  {
+   "id": "kundenwert-clv",
+   "cat": "bindung",
+   "risk": null,
+   "q": "Was versteht man unter dem Kundenwert (Customer Lifetime Value)?",
+   "term": "Kundenwert (Customer Lifetime Value)",
+   "short": "Der Kundenwert ist der Betrag, den ein Kunde über die gesamte Dauer der Kundenbeziehung einbringt. Vereinfacht: durchschnittlicher Bestellwert × Bestellungen pro Jahr × Jahre der Kundenbeziehung (genauer: Deckungsbeitrag statt Umsatz).",
+   "long": "Beispiel mit eigenen Zahlen: 60 € Bestellwert × 4 Bestellungen pro Jahr × 5 Jahre = 1.200 € Umsatz. Daran sieht man, wie viel man für Gewinnung und Bindung eines Kunden ausgeben darf. Anders als die ABC-Analyse blickt der Kundenwert auch in die Zukunft.",
+   "links": [],
+   "related": [],
+   "src": ""
+  },
+  {
+   "id": "nps",
+   "cat": "bindung",
+   "risk": null,
+   "q": "Wie misst man mit dem Net Promoter Score, wie zufrieden und treu Kunden sind?",
+   "term": "Net Promoter Score (NPS)",
+   "short": "Kunden beantworten eine Frage: „Wie wahrscheinlich ist es, dass Sie uns weiterempfehlen?“ (0–10). 9–10 = Promotoren (Fans), 7–8 = Passive, 0–6 = Kritiker. NPS = Anteil Promotoren in % minus Anteil Kritiker in %.",
+   "long": "Beispiel: 200 Antworten, 110 Promotoren (55 %), 60 Passive, 30 Kritiker (15 %) → NPS = 55 − 15 = +40. Der Wert liegt zwischen −100 und +100. Sinnvoll: eine offene Zusatzfrage „Was ist der wichtigste Grund für Ihre Bewertung?“ – daraus lassen sich Maßnahmen ableiten.",
+   "links": [],
+   "related": [],
+   "src": ""
+  },
+  {
+   "id": "kundenrueckgewinnung",
+   "cat": "bindung",
+   "risk": null,
+   "q": "Ein Händler verliert vermehrt Stammkunden. Wie erkennt er Abwanderung, und wie gewinnt er Kunden zurück?",
+   "term": "Abwanderung erkennen und Kunden zurückgewinnen",
+   "short": "Warnzeichen: Kunde bestellt seltener oder gar nicht mehr, öffnet keine Newsletter, hat sich beschwert oder schlecht bewertet. Rückgewinnung: Gründe erfragen (kurze Umfrage, Anruf), persönliche „Wir vermissen Sie“-Nachricht mit Gutschein, Problem lösen, auf Neuheiten hinweisen.",
+   "long": "Häufige Gründe für Abwanderung: schlechter Service, ungelöste Beschwerde, lange Lieferzeit, besseres Angebot der Konkurrenz. Ein CRM-System zeigt, wann ein Kunde zuletzt gekauft hat, und kann solche Kunden automatisch markieren. Die Churn-Rate misst, wie viele Kunden abwandern.",
+   "links": [],
+   "related": [],
+   "src": ""
+  },
+  {
+   "id": "after-sales",
+   "cat": "bindung",
+   "risk": null,
+   "q": "Mit welchen Maßnahmen nach dem Kauf (After-Sales) kann ein Online-Händler Kunden binden?",
+   "term": "After-Sales-Service",
+   "short": "Versand- und Lieferinformation mit Sendungsverfolgung, Dankesmail, Pflege- und Anwendungstipps zum gekauften Produkt, Nachfrage zur Zufriedenheit mit Bitte um Bewertung, passende Zubehör-Empfehlungen, einfache Retoure, Erinnerung an Garantie oder Nachkauf.",
+   "long": "Beispiel Outdoor-Händler: Nach dem Zeltkauf eine E-Mail mit Video „Zelt richtig aufbauen“ und Imprägnier-Tipps, zwei Wochen später „Wie war Ihre erste Tour?“. Der Kunde merkt: Der Händler kümmert sich auch nach dem Bezahlen.",
+   "links": [],
+   "related": [],
+   "src": ""
+  },
+  {
+   "id": "newsletter-einwilligung",
+   "cat": "bindung",
+   "risk": null,
+   "q": "Was muss ein Händler beachten, wenn er Kunden per E-Mail-Newsletter binden will?",
+   "term": "Newsletter und Einwilligung",
+   "short": "Werbung per E-Mail braucht grundsätzlich die ausdrückliche Einwilligung des Kunden. Üblich ist das Double-Opt-in: Anmeldung, dann Bestätigungsklick in einer E-Mail. In jedem Newsletter muss es einen einfachen Abmeldelink geben.",
+   "long": "Ausnahme für Bestandskunden: Wer schon gekauft hat, darf unter bestimmten Bedingungen Werbung für ähnliche Produkte erhalten – wenn er bei der Bestellung darauf hingewiesen wurde und jederzeit widersprechen kann. Zu viele Mails führen zu Beschwerden („mit Werbung überhäuft“) und Abmeldungen – lieber seltener, dafür passend und persönlich.",
+   "links": [],
+   "related": [],
+   "src": ""
+  },
+  {
+   "id": "kulanz",
+   "cat": "beschwerde",
+   "risk": null,
+   "q": "Was ist Kulanz, und wann ist sie sinnvoll?",
+   "term": "Kulanz",
+   "short": "Kulanz ist ein freiwilliges Entgegenkommen des Händlers, zu dem er rechtlich nicht verpflichtet ist – z. B. Umtausch nach Ablauf der Widerrufsfrist, Reparatur nach Ende der Gewährleistung oder ein Gutschein als Entschuldigung.",
+   "long": "Kulanz lohnt sich vor allem bei Stammkunden und A-Kunden, bei kleinen Beträgen und wenn der Ärger durch einen eigenen Fehler entstand. Damit Mitarbeitende schnell entscheiden können, braucht es einen festgelegten Kulanzrahmen (z. B. bis 30 € ohne Rückfrage). Abgrenzung: Gewährleistung ist gesetzliche Pflicht, Garantie ein freiwilliges Versprechen, Kulanz eine Entscheidung im Einzelfall.",
+   "links": [],
+   "related": [],
+   "src": ""
+  },
+  {
+   "id": "beschwerdeleitfaden",
+   "cat": "beschwerde",
+   "risk": null,
+   "q": "Wie läuft ein Beschwerdegespräch am Telefon oder im Chat am besten ab?",
+   "term": "Beschwerdegespräch: der Ablauf",
+   "short": "1. Zuhören und ausreden lassen. 2. Verständnis zeigen und bedanken („Danke, dass Sie uns das sagen“). 3. Nachfragen und den Sachverhalt klären (Bestellnummer, was genau ist passiert?). 4. Lösung anbieten oder gemeinsam finden. 5. Zusammenfassen, was jetzt passiert und bis wann. 6. Nachfassen, ob alles geklappt hat.",
+   "long": "So ein Ablauf gehört in einen Beschwerdeleitfaden für alle Mitarbeitenden. Wichtig: nicht unterbrechen, nicht rechtfertigen, keine Schuld beim Kunden suchen, nur zusagen, was man auch halten kann.",
+   "links": [],
+   "related": [],
+   "src": ""
+  },
+  {
+   "id": "veraergerte-kunden",
+   "cat": "beschwerde",
+   "risk": null,
+   "q": "Ein Kunde schreibt wütend und beleidigend („Seid ihr unfähig?“). Wie reagiert man professionell?",
+   "term": "Umgang mit sehr verärgerten Kunden",
+   "short": "Ruhig und sachlich bleiben, die Beleidigung nicht persönlich nehmen und nicht zurückschießen. Den berechtigten Kern finden und darauf eingehen, Verständnis für den Ärger zeigen, sich für Fehler entschuldigen und eine konkrete Lösung anbieten. Bei öffentlichen Posts: kurz öffentlich antworten, Details im privaten Kanal klären.",
+   "long": "Hinter Wut steckt meist eine enttäuschte Erwartung (Lieferung zu spät, Preis gefühlt unfair). Ich-Botschaften helfen: „Ich verstehe, dass Sie verärgert sind“ statt „Sie müssen verstehen …“. Grenze: Bei Drohungen oder schweren Beleidigungen freundlich, aber bestimmt darauf hinweisen und an eine Führungskraft weitergeben.",
+   "links": [],
+   "related": [],
+   "src": ""
+  },
+  {
+   "id": "positiv-formulieren",
+   "cat": "beschwerde",
+   "risk": null,
+   "q": "Wie formuliert man eine Antwort auf eine Beschwerde kundenorientiert?",
+   "term": "Kundenorientiert formulieren",
+   "short": "Positiv statt negativ: „Ich kann Ihnen anbieten …“ statt „Das geht nicht.“ Sie-Stil statt Wir-Stil: „Sie erhalten …“ statt „Wir haben veranlasst …“. Konkret statt vage: „bis Freitag“ statt „bald“. Keine Fachsprache, keine Schuldzuweisung, ehrliche Entschuldigung bei eigenem Fehler.",
+   "long": "Beispiele: „Leider können wir das nicht erstatten“ → „Gern schreiben wir Ihnen einen Gutschein über 15 € gut.“ – „Sie haben die falsche Größe bestellt“ → „Damit die Hose passt, tauschen wir sie Ihnen kostenlos um.“ Diese Regeln gelten für E-Mail, Chat und Social Media gleichermaßen.",
+   "links": [],
+   "related": [],
+   "src": ""
+  },
+  {
+   "id": "beschwerdeauswertung",
+   "cat": "beschwerde",
+   "risk": null,
+   "q": "Wozu und wie wertet man eingegangene Beschwerden aus?",
+   "term": "Beschwerden auswerten (indirekter Prozess)",
+   "short": "Beschwerden werden nach Gründen erfasst und gezählt (z. B. falsche Ware, verspätete Lieferung, beschädigte Ware, zu viel Werbung). Die häufigsten Gründe kommen zuerst dran: Ursache suchen, Maßnahme festlegen, Erfolg prüfen. Die Ergebnisse gehen regelmäßig an Geschäftsführung und Fachabteilungen.",
+   "long": "Beispiele: viele Beschwerden „falsche Ware geliefert“ → Kontrolle beim Verpacken (Scan); „mit Werbung überhäuft“ → Newsletter seltener und nach Interessen; „Ware entsprach nicht der Beschreibung“ → bessere Produktfotos und Maßangaben. So wird aus einzelnen Beschwerden eine dauerhafte Verbesserung.",
+   "links": [],
+   "related": [],
+   "src": ""
+  },
+  {
+   "id": "beschwerde-kennzahlen",
+   "cat": "beschwerde",
+   "risk": null,
+   "q": "Mit welchen Kennzahlen kann man messen, wie gut das Beschwerdemanagement arbeitet?",
+   "term": "Kennzahlen im Beschwerdemanagement",
+   "short": "Beschwerdequote (Beschwerden ÷ Bestellungen × 100), durchschnittliche Bearbeitungszeit, Erstlösungsquote (beim ersten Kontakt gelöst), Zufriedenheit mit der Lösung (kurze Umfrage danach), Anteil der Kunden, die nach einer Beschwerde wieder kaufen.",
+   "long": "Beispiel mit eigenen Zahlen: 4.000 Bestellungen, 120 Beschwerden → Beschwerdequote 3 %. Von 120 Beschwerden wurden 84 beim ersten Kontakt gelöst → Erstlösungsquote 70 %. Achtung: Eine sehr niedrige Beschwerdequote kann auch bedeuten, dass Kunden sich nicht trauen oder es zu umständlich ist.",
+   "links": [],
+   "related": [],
+   "src": ""
+  },
+  {
+   "id": "stille-unzufriedene",
+   "cat": "beschwerde",
+   "risk": null,
+   "q": "Warum beschweren sich viele unzufriedene Kunden nicht – und was kann der Händler tun?",
+   "term": "Warum sich viele Kunden nicht beschweren",
+   "short": "Gründe: Aufwand zu hoch, Kontaktweg nicht zu finden, Gefühl, dass es nichts bringt, Ärger über Warteschleifen. Diese Kunden wandern still ab und erzählen es anderen. Gegenmittel (Beschwerdestimulierung): Kontaktwege gut sichtbar machen, kurzes Formular, Feedback aktiv erfragen, schnelle Reaktion zusagen.",
+   "long": "Man spricht vom Eisberg: Sichtbar ist nur der kleine Teil der Unzufriedenen, die sich melden – der große Teil bleibt unsichtbar. Deshalb ist jede Beschwerde wertvoll und sollte als Hinweis auf weitere unzufriedene Kunden verstanden werden.",
+   "links": [],
+   "related": [],
+   "src": ""
   }
  ]
 };

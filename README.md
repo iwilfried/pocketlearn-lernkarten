@@ -7,7 +7,7 @@ Offline-fähige Lernkarten-App (PWA) von Learning Factory. Jede Karte hat **Frag
 | Kartenset | Adresse | Ordner | Bauskript |
 |---|---|---|---|
 | **E-Commerce Prüfung – Geschäftsprozesse** (164 Karten) | https://karten.pocketlearn.online/ | Hauptordner (Kopie in `ec-gp/`) | `tools/ec-gp/build_ec.py` |
-| **E-Commerce Prüfung – Kundenkommunikation** (119 Karten) | https://karten.pocketlearn.online/kk/ | `kk/` | `tools/kk/build_kk.py` |
+| **E-Commerce Prüfung – Kundenkommunikation** (134 Karten) | https://karten.pocketlearn.online/kk/ | `kk/` | `tools/kk/build_kk.py` |
 
 Die beiden E-Commerce-Sets sind über den Umschalter „Prüfungsbereich“ verbunden (`meta.family` in `deck.js`); jedes Set hat einen eigenen Lernstand.
 Ausgewertet wurden jeweils die IHK-Prüfungen Sommer 2020 bis Winter 2025; alle Texte sind eigene Formulierungen, Rechenaufgaben haben eigene Zahlen.
