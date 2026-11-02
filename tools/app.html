@@ -192,6 +192,15 @@ footer a { color: inherit; }
 .install .tx b { display: block; font-size: 15px; }
 .install svg.sh { vertical-align: -3px; }
 .install .x { flex: none; background: transparent; border: 0; color: var(--muted); font-size: 20px; padding: 4px 8px; }
+.fam { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; padding-top: 14px; }
+.fam .lbl { font-family: var(--f-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-right: 4px; }
+.fam a { text-decoration: none; color: var(--ink); border: 1px solid var(--rule-strong); background: var(--surface); padding: 7px 14px; border-radius: 999px; font-weight: 600; font-size: 14px; }
+.fam a[aria-current="page"] { background: var(--ink); color: var(--on-ink); border-color: var(--ink); }
+.fam a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+@media (max-width: 560px) {
+  .fam .lbl { width: 100%; }
+  .fam a { flex: 1; text-align: center; padding: 8px 6px; font-size: 13px; }
+}
 .freq { font-family: var(--f-mono); font-size: 11px; color: var(--accent); white-space: nowrap; }
 .tg { display: flex; flex-direction: column; gap: 14px; }
 .tg .trow { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 12px; align-items: baseline; }
@@ -220,6 +229,7 @@ footer a { color: inherit; }
   </nav>
 </div></header>
 
+<nav class="fam wrap" id="fam" aria-label="Prüfungsbereich" hidden></nav>
 <main class="wrap" id="app"></main>
 <footer id="foot"></footer>
 <div class="toast" id="toast" hidden></div>
@@ -297,6 +307,7 @@ footer a { color: inherit; }
   function pool() { return S.settings.cat === "all" ? CARDS : CARDS.filter(c => c.cat === S.settings.cat); }
   function toast(msg) { const t = $("#toast"); t.textContent = msg; t.hidden = false; clearTimeout(toast.t); toast.t = setTimeout(() => t.hidden = true, 2200); }
   function setNav(v) { document.querySelectorAll(".nav button").forEach(b => b.setAttribute("aria-current", b.dataset.view === v ? "true" : "false")); }
+  function famVisible(on) { const f = document.getElementById("fam"); if (f && f.dataset.on) f.hidden = !on; }
 
   // ---------- Ansicht: Start ----------
   const SHARE_SVG = '<svg class="sh" width="16" height="18" viewBox="0 0 15 17" aria-hidden="true"><path d="M7.5 1v10M4 4.5 7.5 1 11 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 7.5H2.5v8h10v-8H10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>';
@@ -310,6 +321,7 @@ footer a { color: inherit; }
     return `<div class="install" id="installBox"><div class="ic" aria-hidden="true">⤓</div><div class="tx">${tx}</div>${btn}<button class="x" id="installX" aria-label="Hinweis ausblenden">×</button></div>`;
   }
   function renderHome() {
+    famVisible(true);
     setNav("home");
     const now = Date.now(), P = pool();
     const due = P.filter(c => isDue(c.id, now)).length;
@@ -407,6 +419,7 @@ footer a { color: inherit; }
     renderCard();
   }
   function renderCard() {
+    famVisible(false);
     setNav("home");
     if (Q.i >= Q.ids.length) return renderDone();
     const c = BY_ID[Q.ids[Q.i]], mode = S.settings.mode, st = status(c.id);
@@ -463,6 +476,7 @@ footer a { color: inherit; }
     renderCard();
   }
   function renderDone() {
+    famVisible(true);
     const now = Date.now();
     const next = CARDS.map(c => stateOf(c.id)).filter(s => s && s.due > now).sort((a, b) => a.due - b.due)[0];
     const when = next ? new Date(next.due).toLocaleDateString("de-DE", { weekday: "long", day: "numeric", month: "long" }) : null;
@@ -482,6 +496,7 @@ footer a { color: inherit; }
   let B = { q: "", cat: "all", open: null };
   // ---------- Ansicht: Themen (Prüfungshäufigkeit) ----------
   function renderThemes() {
+    famVisible(true);
     setNav("themes"); Q = null;
     const allEx = new Set(); CARDS.forEach(c => exams(c).forEach(e => allEx.add(e)));
     const cats = Object.keys(D.meta.categories).map(k => {
@@ -523,6 +538,7 @@ footer a { color: inherit; }
     document.querySelectorAll("[data-open-top]").forEach(b => b.onclick = () => { B.open = B.open === b.dataset.openTop ? null : b.dataset.openTop; renderThemes(); });
   }
   function renderBrowse() {
+    famVisible(true);
     setNav("browse"); Q = null;
     $("#app").innerHTML = `
       <section class="view">
@@ -554,6 +570,7 @@ footer a { color: inherit; }
 
   // ---------- Ansicht: Fortschritt ----------
   function renderSettings(confirmReset) {
+    famVisible(true);
     setNav("settings"); Q = null;
     const learned = Object.keys(S.cards).length;
     $("#app").innerHTML = `
@@ -608,6 +625,10 @@ footer a { color: inherit; }
   });
   $("#deckTitle").textContent = D.meta.title;
   if (HAS_SRC) $("#navThemes").hidden = false;
+  if (Array.isArray(D.meta.family) && D.meta.family.length > 1) {
+    const f = $("#fam"); f.hidden = false; f.dataset.on = "1";
+    f.innerHTML = '<span class="lbl">Prüfungsbereich</span>' + D.meta.family.map(x => `<a href="${esc(x.href)}"${x.current ? ' aria-current="page"' : ""}>${esc(x.label)}</a>`).join("");
+  }
   $("#foot").innerHTML = (D.meta.source ? `Inhalte: <a href="${esc(D.meta.source)}" target="_blank" rel="noopener">${esc(D.meta.sourceLabel)}</a>` : esc(D.meta.sourceLabel)) + ` · ${esc(D.meta.publisher)}`;
   renderHome();
 })();

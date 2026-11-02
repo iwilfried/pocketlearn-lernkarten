@@ -2,6 +2,7 @@
 Aufruf: python3 build_ec.py <app.html> <zielordner_server> <ziel_artifact.html>
 """
 import json, sys, os, importlib
+FAMILY = [{"label": "Geschäftsprozesse", "href": "/", "current": True}, {"label": "Kundenkommunikation", "href": "/kk/"}]
 sys.path.insert(0, os.path.dirname(__file__))
 parts = ["k1_vertrieb_recht_projekt", "k2_sortiment_kalkulation", "k3_marketing", "k4_controlling", "k5_rechnen"]
 cards = []
@@ -14,13 +15,14 @@ assert len(ids) == len(set(ids)), "doppelte IDs"
 
 meta = {
     "id": "ec-gp",
-    "title": "E-Commerce Prüfung",
-    "subtitle": f"Geschäftsprozesse · {len(cards)} Karten",
+    "title": "Geschäftsprozesse",
+    "subtitle": f"E-Commerce Prüfung · {len(cards)} Karten",
     "intro": "Lernkarten zu Teil 2 der Abschlussprüfung Kaufmann/Kauffrau im E-Commerce: das Fachwissen, das in den Prüfungen 2020 bis 2025 immer wieder abgefragt wurde, dazu Rechenaufgaben mit Lösungsweg. Prüfungsbezug „S24 2.1“ heißt: Sommer 2024, Aufgabe 2.1 (W = Winter).",
     "source": "",
     "sourceLabel": "Ausgewertet: IHK-Abschlussprüfungen 2020–2025, eigene Formulierungen",
     "srcLabel": "Prüfungsbezug",
     "publisher": "Learning Factory",
+    "family": FAMILY,
     "categories": {
         "vertrieb": "Vertriebskanäle", "recht": "Recht & Datenschutz", "projekt": "Projektmanagement",
         "sortiment": "Sortiment", "kalkulation": "Kalkulation & Preise", "marketing": "Online-Marketing",
@@ -36,7 +38,7 @@ tpl = open(sys.argv[1], encoding="utf8").read()
 tpl = tpl.replace("<title>EU AI Act Lernkarten</title>", "<title>E-Commerce Prüfungskarten</title>")
 tpl = tpl.replace('content="Lernkarten zum EU AI Act – Frage, Kurzantwort, Erklärung. pocketlearn · Learning Factory."',
                   'content="Lernkarten zur Abschlussprüfung Kaufmann/Kauffrau im E-Commerce – Geschäftsprozesse. pocketlearn · Learning Factory."')
-tpl = tpl.replace('<b id="deckTitle">EU AI Act</b>', '<b id="deckTitle">E-Commerce Prüfung</b>')
+tpl = tpl.replace('<b id="deckTitle">EU AI Act</b>', '<b id="deckTitle">Geschäftsprozesse</b>')
 
 # Server-Fassung
 out = sys.argv[2]; os.makedirs(out, exist_ok=True)
@@ -51,7 +53,7 @@ head_extra = ('<link rel="manifest" href="manifest.webmanifest">\n'
               '<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}[hidden]{display:none!important}</style>\n')
 foot = '<script>if("serviceWorker" in navigator){navigator.serviceWorker.register("sw.js").catch(function(){});}</script>\n</body>\n</html>\n'
 srv = head + tpl.replace("<!--HEADEXTRA-->", head_extra).replace('<header class="top">', '</head>\n<body>\n<header class="top">', 1) \
-    .replace("<!--DECK-->", '<script src="deck.js?v=3"></script>').replace("<!--FOOTEXTRA-->", foot)
+    .replace("<!--DECK-->", '<script src="deck.js?v=4"></script>').replace("<!--FOOTEXTRA-->", foot)
 open(os.path.join(out, "index.html"), "w", encoding="utf8").write(srv)
 open(os.path.join(out, "deck.js"), "w", encoding="utf8").write(deck_js)
 json.dump({"name": "E-Commerce Prüfungskarten", "short_name": "EC-Prüfung",
@@ -62,7 +64,7 @@ json.dump({"name": "E-Commerce Prüfungskarten", "short_name": "EC-Prüfung",
                      {"src": "icon-512.png", "sizes": "512x512", "type": "image/png"}]},
           open(os.path.join(out, "manifest.webmanifest"), "w", encoding="utf8"), ensure_ascii=False, indent=2)
 open(os.path.join(out, "sw.js"), "w", encoding="utf8").write(
-    'const C="ec-gp-v3";const F=["./","./index.html","./deck.js?v=3","./manifest.webmanifest","./icon-192.png","./icon-512.png"];\n'
+    'const C="ec-gp-v4";const F=["./","./index.html","./deck.js?v=4","./manifest.webmanifest","./icon-192.png","./icon-512.png"];\n'
     'self.addEventListener("install",e=>{e.waitUntil(caches.open(C).then(c=>c.addAll(F)).then(()=>self.skipWaiting()))});\n'
     'self.addEventListener("activate",e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==C&&(x.indexOf(\"ec-gp\")===0||x===\"lernkarten-v1\")).map(x=>caches.delete(x)))).then(()=>self.clients.claim()))});\n'
     'self.addEventListener("fetch",e=>{if(e.request.method!=="GET")return;e.respondWith(fetch(e.request).then(r=>{const cp=r.clone();caches.open(C).then(c=>c.put(e.request,cp));return r}).catch(()=>caches.match(e.request)))});\n')

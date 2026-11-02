@@ -4,14 +4,21 @@ Offline-fähige Lernkarten-App (PWA) von Learning Factory. Jede Karte hat **Frag
 
 ## Kartensets und Adressen
 
-| Kartenset | Adresse | Ordner |
-|---|---|---|
-| **E-Commerce Prüfung** (Teil 2 der Abschlussprüfung Kaufmann/Kauffrau im E-Commerce, Geschäftsprozesse, 164 Karten) | https://karten.pocketlearn.online/ | Hauptordner |
-| dasselbe Set, alte Adresse | https://karten.pocketlearn.online/ec-gp/ | `ec-gp/` |
-| **EU AI Act** (380 Begriffe aus dem [EU AI Act Glossar](https://glossar.pocketlearn.online/)) | https://karten.pocketlearn.online/eu-ai-act/ | `eu-ai-act/` |
+| Kartenset | Adresse | Ordner | Bauskript |
+|---|---|---|---|
+| **E-Commerce Prüfung – Geschäftsprozesse** (164 Karten) | https://karten.pocketlearn.online/ | Hauptordner (Kopie in `ec-gp/`) | `tools/ec-gp/build_ec.py` |
+| **E-Commerce Prüfung – Kundenkommunikation** (119 Karten) | https://karten.pocketlearn.online/kk/ | `kk/` | `tools/kk/build_kk.py` |
+| **EU AI Act** (380 Begriffe) | https://karten.pocketlearn.online/eu-ai-act/ | `eu-ai-act/` | `tools/build.js` |
 
-E-Commerce: Ausgewertet wurden die IHK-Prüfungen 2020–2025; alle Texte sind eigene Formulierungen, die Rechenaufgaben haben eigene Zahlen. Bauskripte: `tools/ec-gp/`.
-Nach einem Neubau mit `tools/ec-gp/build_ec.py` die erzeugten Dateien in `ec-gp/` **und** in den Hauptordner kopieren.
+Die beiden E-Commerce-Sets sind über den Umschalter „Prüfungsbereich“ verbunden (`meta.family` in `deck.js`); jedes Set hat einen eigenen Lernstand.
+Ausgewertet wurden jeweils die IHK-Prüfungen Sommer 2020 bis Winter 2025; alle Texte sind eigene Formulierungen, Rechenaufgaben haben eigene Zahlen.
+
+**Neu bauen (E-Commerce):**
+```bash
+python3 tools/ec-gp/build_ec.py tools/app.html ec-gp /tmp/ec.html   # danach ec-gp/* in den Hauptordner kopieren
+python3 tools/kk/build_kk.py tools/app.html kk /tmp/kk.html
+```
+Vorher die Versionsnummern (`deck.js?v=…`, Cache-Name in `sw.js`) im jeweiligen Bauskript erhöhen.
 
 ## Funktionen
 

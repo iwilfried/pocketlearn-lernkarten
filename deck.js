@@ -3,13 +3,24 @@
 window.DECK={
  "meta": {
   "id": "ec-gp",
-  "title": "E-Commerce Prüfung",
-  "subtitle": "Geschäftsprozesse · 164 Karten",
+  "title": "Geschäftsprozesse",
+  "subtitle": "E-Commerce Prüfung · 164 Karten",
   "intro": "Lernkarten zu Teil 2 der Abschlussprüfung Kaufmann/Kauffrau im E-Commerce: das Fachwissen, das in den Prüfungen 2020 bis 2025 immer wieder abgefragt wurde, dazu Rechenaufgaben mit Lösungsweg. Prüfungsbezug „S24 2.1“ heißt: Sommer 2024, Aufgabe 2.1 (W = Winter).",
   "source": "",
   "sourceLabel": "Ausgewertet: IHK-Abschlussprüfungen 2020–2025, eigene Formulierungen",
   "srcLabel": "Prüfungsbezug",
   "publisher": "Learning Factory",
+  "family": [
+   {
+    "label": "Geschäftsprozesse",
+    "href": "/",
+    "current": true
+   },
+   {
+    "label": "Kundenkommunikation",
+    "href": "/kk/"
+   }
+  ],
   "categories": {
    "vertrieb": "Vertriebskanäle",
    "recht": "Recht & Datenschutz",
