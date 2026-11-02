@@ -47,7 +47,7 @@ head_extra = ('<link rel="manifest" href="manifest.webmanifest">\n'
               '<meta name="theme-color" content="#0a1628" media="(prefers-color-scheme: dark)">\n'
               '<meta name="apple-mobile-web-app-capable" content="yes">\n'
               '<meta name="apple-mobile-web-app-title" content="EC-Prüfung">\n'
-              '<link rel="apple-touch-icon" href="../icon-192.png">\n'
+              '<link rel="apple-touch-icon" href="icon-192.png">\n'
               '<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}[hidden]{display:none!important}</style>\n')
 foot = '<script>if("serviceWorker" in navigator){navigator.serviceWorker.register("sw.js").catch(function(){});}</script>\n</body>\n</html>\n'
 srv = head + tpl.replace("<!--HEADEXTRA-->", head_extra).replace('<header class="top">', '</head>\n<body>\n<header class="top">', 1) \
@@ -58,8 +58,8 @@ json.dump({"name": "E-Commerce Prüfungskarten", "short_name": "EC-Prüfung",
            "description": "Lernkarten zur Abschlussprüfung Kaufmann/Kauffrau im E-Commerce – Geschäftsprozesse.",
            "start_url": "./index.html", "scope": "./", "display": "standalone", "background_color": "#f8f5ee",
            "theme_color": "#0a1628", "lang": "de", "categories": ["education"],
-           "icons": [{"src": "../icon-192.png", "sizes": "192x192", "type": "image/png"},
-                     {"src": "../icon-512.png", "sizes": "512x512", "type": "image/png"}]},
+           "icons": [{"src": "icon-192.png", "sizes": "192x192", "type": "image/png"},
+                     {"src": "icon-512.png", "sizes": "512x512", "type": "image/png"}]},
           open(os.path.join(out, "manifest.webmanifest"), "w", encoding="utf8"), ensure_ascii=False, indent=2)
 open(os.path.join(out, "sw.js"), "w", encoding="utf8").write(
     'const C="ec-gp-v1";const F=["./","./index.html","./deck.js?v=1","./manifest.webmanifest"];\n'
