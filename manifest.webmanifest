@@ -1,7 +1,7 @@
 {
-  "name": "EU AI Act Lernkarten",
-  "short_name": "Lernkarten",
-  "description": "Lernkarten zum EU AI Act – Frage, Kurzantwort, Erklärung.",
+  "name": "E-Commerce Prüfungskarten",
+  "short_name": "EC-Prüfung",
+  "description": "Lernkarten zur Abschlussprüfung Kaufmann/Kauffrau im E-Commerce – Geschäftsprozesse.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
@@ -13,12 +13,12 @@
   ],
   "icons": [
     {
-      "src": "icon-192.png",
+      "src": "../icon-192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "icon-512.png",
+      "src": "../icon-512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
