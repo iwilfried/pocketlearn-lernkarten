@@ -5,7 +5,7 @@ window.DECK={
   "id": "ec-kk",
   "title": "Kundenkommunikation",
   "subtitle": "E-Commerce Prüfung · 134 Karten",
-  "intro": "Lernkarten zum Prüfungsbereich Kundenkommunikation im E-Commerce (Teil 2 der Abschlussprüfung Kaufmann/Kauffrau im E-Commerce): Vertragsstörungen, Mahnwesen, Retouren, Beschwerdemanagement, Kommunikationsmodelle und Servicekanäle – ausgewertet aus den Prüfungen 2020 bis 2025, mit Rechenaufgaben. Prüfungsbezug „S24 2.1“ heißt: Sommer 2024, Aufgabe 2.1 (W = Winter).",
+  "intro": "Lernkarten zum Prüfungsbereich Kundenkommunikation im E-Commerce (Teil 2 der Abschlussprüfung Kaufmann/Kauffrau im E-Commerce): Vertragsstörungen, Mahnwesen, Retouren, Beschwerdemanagement, Kommunikationsmodelle und Servicekanäle – ausgewertet aus den Prüfungen 2020 bis 2025, mit Rechenaufgaben.",
   "source": "",
   "sourceLabel": "Ausgewertet: IHK-Abschlussprüfungen 2020–2025, eigene Formulierungen",
   "srcLabel": "Prüfungsbezug",

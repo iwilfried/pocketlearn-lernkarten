@@ -487,7 +487,7 @@ footer a { color: inherit; }
         ${mode === "frage" ? `<div class="term-line">${esc(c.term)}</div>` : ""}
         <p class="short">${esc(c.short)}</p>
         <button class="explain-toggle" id="explainBtn" aria-expanded="${Q.explained}">${Q.explained ? "Erklärung ausblenden" : "Erklärung anzeigen"}</button>
-        ${Q.explained ? `<div class="long"><span class="sub">Erklärung</span><p>${esc(c.long)}</p>${relHtml}${links}${c.src ? `<span class="sub">${esc(D.meta.srcLabel || "Quelle")}: ${esc(c.src)}</span>` : ""}</div>` : ""}
+        ${Q.explained ? `<div class="long"><span class="sub">Erklärung</span><p>${esc(c.long)}</p>${relHtml}${links}</div>` : ""}
       </div>`;
     }
     const grades = [["Nochmal", "--again"], ["Schwer", "--hard"], ["Gut", "--good"], ["Leicht", "--easy"]];
@@ -581,7 +581,7 @@ footer a { color: inherit; }
         <div class="list top-list">${top.map(c => {
           const st = status(c.id), open = B.open === c.id;
           return `<div class="row"><button data-open-top="${c.id}" aria-expanded="${open}" style="${catVar(c.cat)}">
-            <span class="dot"></span><span class="t">${esc(c.term)}<span class="q">${esc(catName(c.cat))} · ${esc(c.src)}</span></span><span class="st" data-s="${st}">${freq(c)}× · ${st}</span>
+            <span class="dot"></span><span class="t">${esc(c.term)}<span class="q">${esc(catName(c.cat))}</span></span><span class="st" data-s="${st}">${freq(c)}× · ${st}</span>
           </button>${open ? `<div class="body"><p class="short">${esc(c.short)}</p></div>` : ""}</div>`;
         }).join("")}</div>
       </section>`;
@@ -615,7 +615,7 @@ footer a { color: inherit; }
       const st = status(c.id), open = B.open === c.id;
       return `<div class="row"><button data-open="${c.id}" aria-expanded="${open}" style="${catVar(c.cat)}">
           <span class="dot"></span><span class="t">${esc(c.term)}<span class="q">${esc(c.q)}</span></span><span class="st" data-s="${st}">${st}</span>
-        </button>${open ? `<div class="body"><p class="short">${esc(c.short)}</p><p class="longtxt">${esc(c.long)}</p>${c.src ? `<p class="hint">${esc(D.meta.srcLabel || "Quelle")}: ${esc(c.src)}</p>` : ""}</div>` : ""}</div>`;
+        </button>${open ? `<div class="body"><p class="short">${esc(c.short)}</p><p class="longtxt">${esc(c.long)}</p></div>` : ""}</div>`;
     }).join("") : `<p class="empty">Keine Karte passt zu „${esc(B.q)}“.</p>`;
     document.querySelectorAll("[data-open]").forEach(b => b.onclick = () => { B.open = B.open === b.dataset.open ? null : b.dataset.open; drawList(); });
   }
