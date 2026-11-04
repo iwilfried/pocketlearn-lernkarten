@@ -299,7 +299,7 @@ footer a { color: inherit; }
 <footer id="foot"></footer>
 <div class="toast" id="toast" hidden></div>
 
-<script src="deck.js?v=7"></script>
+<script src="deck.js?v=8"></script>
 <script>
 (function () {
   "use strict";
@@ -481,6 +481,7 @@ footer a { color: inherit; }
     }
     if (!ids.length) return;
     Q = { ids, i: 0, total: ids.length, cram, revealed: false, explained: false, again: 0, done: 0 };
+    markView("session");
     renderCard();
   }
   function renderCard() {
@@ -524,7 +525,7 @@ footer a { color: inherit; }
           : `<button class="btn primary reveal" id="revealBtn">Antwort zeigen</button>`}
         <p class="keys"><kbd>Leertaste</kbd> Antwort · <kbd>E</kbd> Erklärung · <kbd>1</kbd>–<kbd>4</kbd> bewerten</p>
       </section>`;
-    $("#quitBtn").onclick = () => { Q = null; renderHome(); };
+    $("#quitBtn").onclick = leaveSession;
     if ($("#revealBtn")) { $("#revealBtn").onclick = reveal; $("#revealBtn").focus({ preventScroll: true }); }
     if ($("#explainBtn")) $("#explainBtn").onclick = toggleExplain;
     document.querySelectorAll("[data-grade]").forEach(b => b.onclick = () => rate(+b.dataset.grade));
@@ -553,7 +554,7 @@ footer a { color: inherit; }
         ${!Q.cram && when ? ` Die nächste Wiederholung ist am ${when} fällig.` : ""}</p>
         <div class="actions"><button class="btn primary" id="homeBtn">Zur Übersicht</button><button class="btn" id="againBtn">Noch eine Runde</button></div>
       </section>`;
-    $("#homeBtn").onclick = () => { Q = null; renderHome(); };
+    $("#homeBtn").onclick = leaveSession;
     $("#againBtn").onclick = () => startSession(Q.cram);
   }
 
@@ -598,8 +599,8 @@ footer a { color: inherit; }
           </button>${open ? `<div class="body"><p class="short">${esc(c.short)}</p></div>` : ""}</div>`;
         }).join("")}</div>
       </section>`;
-    $("#learnTop").onclick = () => { S.settings.order = "wichtig"; S.settings.cat = "all"; save(); renderHome(); window.scrollTo(0, 0); };
-    document.querySelectorAll("[data-goto-cat]").forEach(b => b.onclick = () => { renderHome(); window.scrollTo(0, document.body.scrollHeight); });
+    $("#learnTop").onclick = () => { S.settings.order = "wichtig"; S.settings.cat = "all"; save(); nav("home"); };
+    document.querySelectorAll("[data-goto-cat]").forEach(b => b.onclick = () => { nav("home"); window.scrollTo(0, document.body.scrollHeight); });
     document.querySelectorAll("[data-open-top]").forEach(b => b.onclick = () => { B.open = B.open === b.dataset.openTop ? null : b.dataset.openTop; renderThemes(); });
   }
   function renderBrowse() {
@@ -717,7 +718,7 @@ footer a { color: inherit; }
         </section>
       </section>`;
     $("#examIn").onchange = e => { try { if (e.target.value) localStorage.setItem(EXAM_KEY, e.target.value); else localStorage.removeItem(EXAM_KEY); } catch (er) {} renderGuide(); };
-    if ($("#planSet")) $("#planSet").onclick = () => { S.settings.newPerSession = P.set; if (HAS_SRC) S.settings.order = "wichtig"; S.settings.cat = "all"; save(); toast(P.set + " neue Karten pro Runde eingestellt"); renderHome(); window.scrollTo(0, 0); };
+    if ($("#planSet")) $("#planSet").onclick = () => { S.settings.newPerSession = P.set; if (HAS_SRC) S.settings.order = "wichtig"; S.settings.cat = "all"; save(); toast(P.set + " neue Karten pro Runde eingestellt"); nav("home"); };
   }
 
   // ---------- Willkommen (nur beim ersten Öffnen) ----------
@@ -815,10 +816,10 @@ footer a { color: inherit; }
     const apply = () => { setWelcomeSeen(); plans.forEach(({ x, P }) => { if (P && P.set) setNewFor(x, P.set); }); };
     document.querySelectorAll("[data-go]").forEach(b => b.onclick = () => {
       apply(); const x = areas[+b.dataset.go];
-      if (x.current) { showChrome(true); renderHome(); window.scrollTo(0, 0); const P = plans[+b.dataset.go].P; if (P && P.set) toast(P.set + " neue Karten pro Runde eingestellt"); }
+      if (x.current) { nav("home", true); const P = plans[+b.dataset.go].P; if (P && P.set) toast(P.set + " neue Karten pro Runde eingestellt"); }
       else location.href = x.href;
     });
-    $("#welMore").onclick = () => { apply(); showChrome(true); renderGuide(); window.scrollTo(0, 0); };
+    $("#welMore").onclick = () => { apply(); nav("guide", true); };
   }
 
   function renderSettings(confirmReset) {
@@ -867,14 +868,46 @@ footer a { color: inherit; }
     if ($("#resetBtn")) $("#resetBtn").onclick = () => renderSettings(true);
     if ($("#resetYes")) $("#resetYes").onclick = () => { S.cards = {}; save(); toast("Lernstand gelöscht"); renderSettings(); };
     if ($("#resetNo")) $("#resetNo").onclick = () => renderSettings();
-    $("#welAgain").onclick = () => { renderWelcome(); window.scrollTo(0, 0); };
+    $("#welAgain").onclick = () => nav("welcome");
   }
 
   // ---------- Steuerung ----------
-  document.querySelectorAll(".nav button").forEach(b => b.onclick = () => {
-    const v = b.dataset.view; if (v === "home") { Q = null; renderHome(); } else if (v === "browse") renderBrowse(); else if (v === "themes") renderThemes(); else if (v === "guide") renderGuide(); else renderSettings();
+  // Jede Ansicht hat eine eigene Adresse (#themen, #fortschritt …), damit die Zurück-Taste des Handys funktioniert.
+  const HASH = { home: "", themes: "themen", guide: "so-lernst-du", browse: "karten", settings: "fortschritt", session: "runde", welcome: "willkommen" };
+  function viewFromHash() { const h = location.hash.replace("#", ""); const v = Object.keys(HASH).find(k => HASH[k] && HASH[k] === h); return v || "home"; }
+  function urlFor(v) { return HASH[v] ? "#" + HASH[v] : location.pathname + location.search; }
+  function curState() { return (history.state && history.state.v) || viewFromHash(); }
+  function markView(v, replace) {
+    try {
+      if (replace) history.replaceState({ v }, "", urlFor(v));
+      else if (curState() !== v) history.pushState({ v }, "", urlFor(v));
+    } catch (e) {}
+  }
+  function show(v) {
+    if (v !== "session") Q = null;
+    if (v === "welcome") { renderWelcome(); }
+    else {
+      showChrome(true);
+      if (v === "themes" && HAS_SRC) renderThemes();
+      else if (v === "guide") renderGuide();
+      else if (v === "browse") renderBrowse();
+      else if (v === "settings") renderSettings();
+      else renderHome();
+    }
     window.scrollTo(0, 0);
+  }
+  function nav(v, replace) { markView(v, replace); show(v); }
+  function leaveSession() {
+    Q = null;
+    if (curState() === "session" && history.length > 1) { try { history.back(); return; } catch (e) {} }
+    nav("home", true);
+  }
+  window.addEventListener("popstate", e => {
+    const v = (e.state && e.state.v) || viewFromHash();
+    if (v === "session") { if (Q) return; markView("home", true); show("home"); return; }
+    show(v);
   });
+  document.querySelectorAll(".nav button").forEach(b => b.onclick = () => nav(b.dataset.view));
   document.addEventListener("keydown", e => {
     if (!Q || e.target.matches("input, textarea")) return;
     if ((e.key === " " || e.key === "Enter") && !Q.revealed) { e.preventDefault(); reveal(); }
@@ -888,7 +921,12 @@ footer a { color: inherit; }
     f.innerHTML = '<span class="lbl">Prüfungsbereich</span>' + D.meta.family.map(x => `<a href="${esc(x.href)}"${x.current ? ' aria-current="page"' : ""}>${esc(x.label)}</a>`).join("");
   }
   $("#foot").innerHTML = (D.meta.source ? `Inhalte: <a href="${esc(D.meta.source)}" target="_blank" rel="noopener">${esc(D.meta.sourceLabel)}</a>` : esc(D.meta.sourceLabel)) + ` · ${esc(D.meta.publisher)}`;
-  if (welcomeSeen()) renderHome(); else renderWelcome();
+  {
+    let v = viewFromHash();
+    if (v === "session" || (v === "welcome" && welcomeSeen())) v = "home";
+    if (!welcomeSeen()) v = "welcome";
+    markView(v, true); show(v);
+  }
 })();
 </script>
 <script>if("serviceWorker" in navigator){navigator.serviceWorker.register("sw.js").catch(function(){});}</script>
