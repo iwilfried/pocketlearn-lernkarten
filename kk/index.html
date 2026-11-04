@@ -86,7 +86,9 @@ button { cursor: pointer; }
 /* Kopf */
 .top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); border-bottom: 1px solid var(--rule); }
 .top-in { max-width: 720px; margin: 0 auto; display: flex; align-items: center; gap: 12px; padding-block: 12px; }
-.brand { display: flex; flex-direction: column; line-height: 1.15; min-width: 0; }
+.brand { display: flex; flex-direction: column; align-items: flex-start; line-height: 1.15; min-width: 0; background: none; border: 0; padding: 0; margin: 0; color: inherit; font: inherit; text-align: left; cursor: pointer; border-radius: 6px; }
+.brand:hover b { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+.brand:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 .brand small { font-family: var(--f-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
 .brand b { font-family: var(--f-display); font-weight: 600; font-size: 20px; }
 .nav { margin-left: auto; display: flex; gap: 4px; background: var(--surface-2); padding: 3px; border-radius: 999px; }
@@ -284,7 +286,7 @@ footer a { color: inherit; }
 </head>
 <body>
 <header class="top"><div class="top-in">
-  <div class="brand"><small>pocketlearn · Lernkarten</small><b id="deckTitle">Kundenkommunikation</b></div>
+  <button type="button" class="brand" id="brandBtn" title="Zur Willkommensseite" aria-label="Zur Willkommensseite"><small>pocketlearn · Lernkarten</small><b id="deckTitle">Kundenkommunikation</b></button>
   <nav class="nav" aria-label="Bereiche">
     <button id="navHome" data-view="home" aria-current="true">Lernen</button>
     <button id="navThemes" data-view="themes" hidden>Themen</button>
@@ -299,7 +301,7 @@ footer a { color: inherit; }
 <footer id="foot"></footer>
 <div class="toast" id="toast" hidden></div>
 
-<script src="deck.js?v=7"></script>
+<script src="deck.js?v=8"></script>
 <script>
 (function () {
   "use strict";
@@ -908,6 +910,7 @@ footer a { color: inherit; }
     show(v);
   });
   document.querySelectorAll(".nav button").forEach(b => b.onclick = () => nav(b.dataset.view));
+  $("#brandBtn").onclick = () => { if (curState() !== "welcome") nav("welcome"); };
   document.addEventListener("keydown", e => {
     if (!Q || e.target.matches("input, textarea")) return;
     if ((e.key === " " || e.key === "Enter") && !Q.revealed) { e.preventDefault(); reveal(); }
